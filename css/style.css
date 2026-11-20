@@ -1,6 +1,6 @@
 /* Portfolio26F, accordion iteration.
-   Black type on light panels; each card has its own colour (set inline as --accent,
-   --on-accent for text on it, and --tint for its open panel).
+   Ink type on Paper; each closed card is one palette colour (set inline as --accent,
+   --on-accent for text on it); every open card sits on Mist with a Cobalt outline.
    Motion follows the Swatch Accordion reference: a 0.75s spring with 0.1 bounce,
    rendered below as a CSS linear() curve that settles in 1.05s. */
 
@@ -12,11 +12,17 @@
 @font-face { font-family: 'PP Frama Text'; src: url('../fonts/PPFramaText-RegularItalic.otf') format('opentype'); font-weight: 400; font-style: italic; font-display: swap; }
 
 :root {
-  --ink: #111;
-  --ink-2: #3a3a3a;
-  --paper: #fff;
-  --grey-1: #f3f3f3;
-  --grey-2: #e8e8e8;
+  /* Palette: neutrals + four colours */
+  --paper: #FAFAF7;
+  --line: #E7E7E1;
+  --body: #666660; /* palette Body gray #6E6E68, darkened just enough to reach WCAG AA 4.5:1 on Mist and Line gray */
+  --ink: #141413;
+  --cobalt: #2D5BE0;
+  --mist: #DCE6FC;
+  --olive: #62654B;
+  --lime: #BDE173;
+  --ink-2: var(--body);
+  --grey-1: var(--line);
   --spring: linear(0, 0.0197, 0.0694, 0.1379, 0.2166, 0.2994, 0.382, 0.4613, 0.5354, 0.6033, 0.6644, 0.7186, 0.7661, 0.8072, 0.8424, 0.8723, 0.8975, 0.9185, 0.9359, 0.9501, 0.9617, 0.971, 0.9785, 0.9844, 0.989, 0.9926, 0.9953, 0.9973, 0.9988, 0.9998, 1.0006, 1.001, 1.0013, 1.0015, 1.0015, 1.0015, 1.0014, 1.0013, 1.0012, 1.0011, 1);
   --spring-fallback: cubic-bezier(.22, 1, .36, 1);
   --dur: 1.05s;
@@ -57,7 +63,7 @@ a { color: inherit; text-decoration: none; }
 .nav__tab.is-active { background: var(--paper); color: var(--ink); box-shadow: 0 1px 2px rgba(0,0,0,.06); }
 /* Get in touch: lime pill, blue circle, lime arrow; the two colours trade places on hover */
 .nav__cta, .menu__cta {
-  --cta-a: #BDE274; --cta-b: #4476F6;
+  --cta-a: var(--lime); --cta-b: var(--cobalt);
   background: var(--cta-a); color: var(--ink);
   transition: background .25s ease, color .25s ease;
 }
@@ -72,7 +78,7 @@ a { color: inherit; text-decoration: none; }
   background: var(--cta-b); color: var(--cta-a);
   transition: background .25s ease, color .25s ease, transform .45s var(--out);
 }
-.nav__cta:hover, .menu__cta:hover, .menu__cta:active { background: var(--cta-b); color: #fff; }
+.nav__cta:hover, .menu__cta:hover, .menu__cta:active { background: var(--cta-b); color: var(--paper); }
 .nav__cta:hover .nav__cta-icon, .menu__cta:hover .nav__cta-icon, .menu__cta:active .nav__cta-icon { background: var(--cta-a); color: var(--cta-b); }
 .nav__cta:hover .nav__cta-icon { transform: rotate(45deg); }
 .nav__cta:focus-visible, .menu__cta:focus-visible { outline: 2px solid var(--cta-b); outline-offset: 3px; }
@@ -107,7 +113,7 @@ a { color: inherit; text-decoration: none; }
   border-radius: var(--radius);
   overflow: hidden;
   isolation: isolate;
-  background: linear-gradient(to bottom, color-mix(in srgb, var(--accent) 92%, #000) 0%, var(--accent) 45%, color-mix(in srgb, var(--accent) 70%, #fff) 100%);
+  background: var(--accent);
   transition: flex-grow var(--dur) var(--spring-fallback), flex-basis var(--dur) var(--spring-fallback), height var(--dur) var(--spring-fallback);
   -webkit-tap-highlight-color: transparent;
 }
@@ -118,10 +124,10 @@ a { color: inherit; text-decoration: none; }
 .strip[data-open] { flex-grow: 1; }
 .strip::after {
   content: ""; position: absolute; inset: 0; z-index: 6; border-radius: inherit; pointer-events: none;
-  box-shadow: inset 0 0 0 1px rgba(0,0,0,.08);
+  box-shadow: inset 0 0 0 1px rgba(20,20,19,.06);
   transition: box-shadow .4s ease;
 }
-.strip[data-open]::after { box-shadow: inset 0 0 0 1.5px #4476F6; }
+.strip[data-open]::after { box-shadow: inset 0 0 0 1.5px var(--cobalt); }
 
 /* Open card: blank light panel on the left; on project cards the screenshot sits in a
    framed window from the middle of the card, running off the right edge, zoomed in on
@@ -129,7 +135,7 @@ a { color: inherit; text-decoration: none; }
    nothing resizes while the card grows. */
 .strip__media {
   position: absolute; inset: 0; z-index: 0; overflow: hidden; border-radius: inherit;
-  background: var(--tint, var(--grey-1));
+  background: var(--mist);
   opacity: 0; transition: opacity .3s ease;
 }
 .strip[data-open] .strip__media { opacity: 1; transition: opacity .45s ease .1s; }
@@ -137,7 +143,7 @@ a { color: inherit; text-decoration: none; }
   position: absolute; left: calc(var(--open-w) * .5); top: 17%; bottom: 7.5%;
   width: calc(var(--open-w) * .6);
   border: 2px solid var(--ink); border-right: 0; border-radius: 22px 0 0 22px;
-  overflow: hidden; background: #fff;
+  overflow: hidden; background: var(--paper);
 }
 .strip__img {
   position: absolute; inset: 0; width: 100%; height: 100%; max-width: none;
@@ -154,7 +160,7 @@ a { color: inherit; text-decoration: none; }
 .strip--intro .strip__media::after {
   content: ""; position: absolute; inset: 0; pointer-events: none;
   background:
-    linear-gradient(to top, color-mix(in srgb, var(--tint) 97%, transparent) 0%, color-mix(in srgb, var(--tint) 92%, transparent) 45%, color-mix(in srgb, var(--tint) 45%, transparent) 68%, transparent 85%),
+    linear-gradient(to top, color-mix(in srgb, var(--mist) 97%, transparent) 0%, color-mix(in srgb, var(--mist) 92%, transparent) 45%, color-mix(in srgb, var(--mist) 45%, transparent) 68%, transparent 85%),
     linear-gradient(to bottom, rgba(255,255,255,.35) 0%, transparent 18%);
 }
 .strip--intro .strip__content { max-width: none; }
@@ -188,16 +194,16 @@ a { color: inherit; text-decoration: none; }
   appearance: none; margin: 0; padding: 0; font: inherit; cursor: pointer; pointer-events: auto;
   position: relative; display: grid; place-items: center; width: 44px; height: 44px; border-radius: 50%;
   overflow: hidden; color: var(--ink); outline: none;
-  background: rgba(255,255,255,.75); border: 1px solid rgba(255,255,255,.9);
+  background: color-mix(in srgb, var(--paper) 80%, transparent); border: 1px solid color-mix(in srgb, var(--paper) 90%, transparent);
   -webkit-backdrop-filter: blur(14px) saturate(1.4); backdrop-filter: blur(14px) saturate(1.4);
   box-shadow: 0 6px 18px -10px rgba(20,20,20,.35);
   transition: transform .45s var(--out);
 }
 .strip[data-open] .strip__plus { opacity: 0; pointer-events: none; }
-.strip__plus:focus-visible { box-shadow: 0 0 0 2px #fff, 0 0 0 4px var(--accent); }
+.strip__plus:focus-visible { box-shadow: 0 0 0 2px var(--paper), 0 0 0 4px var(--cobalt); }
 /* Accent fill wipes up from the bottom on hover */
 .strip__pf {
-  position: absolute; inset: -1px; background: var(--ink);
+  position: absolute; inset: -1px; background: var(--fill, var(--ink));
   clip-path: inset(100% 0 0 0);
   transition: clip-path .45s var(--out);
 }
@@ -206,7 +212,7 @@ a { color: inherit; text-decoration: none; }
 @media (hover: hover) {
   .strip:not([data-open]):hover { flex-basis: calc(var(--closed) + 14px); }
   .strip:not([data-open]):hover .strip__pf { clip-path: inset(0 0 0 0); }
-  .strip:not([data-open]):hover .strip__pi { transform: rotate(90deg); color: #fff; }
+  .strip:not([data-open]):hover .strip__pi { transform: rotate(90deg); color: var(--paper); }
   .strip:not([data-open]):hover .strip__vtitle { transform: rotate(180deg) translateX(4px); }
 }
 .strip__plus:active { transform: scale(.9); }
@@ -226,7 +232,7 @@ a { color: inherit; text-decoration: none; }
 .tag {
   display: inline-flex; align-items: center; height: 30px; padding: 0 14px; border-radius: 999px;
   font-size: 13px; white-space: nowrap;
-  background: rgba(255,255,255,.86); border: 1px solid rgba(0,0,0,.08);
+  background: var(--paper); border: 1px solid var(--line);
 }
 
 .strip__content { width: min(680px, 100%); max-width: calc(var(--open-w) * .5 - var(--pad) - 24px); display: flex; flex-direction: column; align-items: flex-start; }
@@ -243,7 +249,7 @@ a { color: inherit; text-decoration: none; }
 .logos__grid { list-style: none; display: flex; flex-wrap: wrap; gap: 8px; margin: 0; padding: 0; }
 .logo {
   width: 64px; height: 64px; flex: none; border-radius: 14px; overflow: hidden;
-  background: var(--paper); border: 1px solid rgba(0,0,0,.08);
+  background: #fff; border: 1px solid var(--line);
 }
 .logo img { width: 100%; height: 100%; object-fit: contain; display: block; }
 
@@ -251,12 +257,12 @@ a { color: inherit; text-decoration: none; }
   pointer-events: auto;
   display: inline-flex; align-items: center; gap: 28px;
   min-height: 52px; padding: 0 20px 0 24px; border-radius: 999px;
-  background: var(--ink); color: #fff; font-size: 16px; white-space: nowrap;
+  background: var(--ink); color: var(--paper); font-size: 16px; white-space: nowrap;
   box-shadow: 0 10px 24px -14px rgba(20,20,20,.55);
   transition: background .25s ease, color .25s ease;
 }
 .cta svg { flex: none; transition: transform .4s var(--out); }
-.strip[data-open] .cta:hover { background: var(--accent); color: var(--on-accent); }
+.strip[data-open] .cta:hover { background: var(--cobalt); color: var(--paper); }
 .strip[data-open] .cta:hover svg { transform: translateX(4px); }
 .cta:active { transform: scale(.97); }
 .cta:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
@@ -273,7 +279,7 @@ a { color: inherit; text-decoration: none; }
   .nav__burger span { display: block; width: 18px; height: 1.6px; border-radius: 2px; background: currentColor; transition: transform .25s var(--out); }
   .nav__burger[aria-expanded="true"] span:first-child { transform: translateY(3.8px) rotate(45deg); }
   .nav__burger[aria-expanded="true"] span:last-child { transform: translateY(-3.8px) rotate(-45deg); }
-  .nav__burger:focus-visible { outline: 2px solid #4476F6; outline-offset: 2px; }
+  .nav__burger:focus-visible { outline: 2px solid var(--cobalt); outline-offset: 2px; }
   .menu:not([hidden]) {
     display: flex; flex-direction: column; gap: 16px;
     position: absolute; top: calc(100% + 8px); left: 16px; right: 16px;
@@ -295,9 +301,9 @@ a { color: inherit; text-decoration: none; }
   .strip {
     flex: none; height: var(--bar);
     transition-property: height;
-    background: linear-gradient(to right, var(--accent) 0%, color-mix(in srgb, var(--accent) 75%, #fff) 100%);
+    background: var(--accent);
   }
-  .strip[data-open] { height: calc(75cqw + 300px); background: var(--tint); }
+  .strip[data-open] { height: calc(75cqw + 300px); background: var(--mist); }
 
   .strip__frame { left: var(--pad); right: 0; width: auto; top: 64px; bottom: auto; height: calc(75cqw - 56px); border-radius: 18px 0 0 18px; }
   .strip--intro .strip__img {
