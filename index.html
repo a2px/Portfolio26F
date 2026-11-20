@@ -24,6 +24,20 @@
         <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M4 14L14 4M6 4h8v8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </span>
     </a>
+    <button class="nav__burger" aria-expanded="false" aria-controls="menu" aria-label="Menu">
+      <span></span><span></span>
+    </button>
+    <div class="menu" id="menu" hidden>
+      <nav class="menu__links" aria-label="Main">
+        <a class="menu__link is-active" href="./" aria-current="page">Work</a>
+        <a class="menu__link" href="https://a2px.github.io/portfolio/about/">About</a>
+        <a class="menu__link" href="https://a2px.github.io/portfolio/dog/">Dog</a>
+      </nav>
+      <a class="menu__cta" href="mailto:axie8288@gmail.com">
+        <span>Get in touch</span>
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M4 14L14 4M6 4h8v8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
   </header>
 
   <main>
@@ -32,15 +46,14 @@
 
         <article class="strip" data-open style="--accent:#4476F6;--on-accent:#fff;--tone:#d4d4d4">
           <div class="strip__media"><img class="strip__img" src="images/intro.webp" alt="" /></div>
-          <button class="strip__trigger" aria-expanded="true" aria-label="01, Introduction"></button>
-          <div class="strip__closed" aria-hidden="true">
-            <span class="strip__num">01</span>
-            <span class="strip__vt"><span class="strip__vtitle">Introduction</span></span>
-            <span class="strip__plw"><span class="strip__plus"><span class="strip__pf"></span><svg class="strip__pi" width="16" height="16" viewBox="0 0 16 16"><path d="M8 2v12M2 8h12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span></span>
+          <div class="strip__closed">
+            <span class="strip__num" aria-hidden="true">01</span>
+            <span class="strip__vt" aria-hidden="true"><span class="strip__vtitle">Introduction</span></span>
+            <button class="strip__plus" aria-expanded="true" aria-label="Open 01, Introduction"><span class="strip__pf"></span><svg class="strip__pi" width="16" height="16" viewBox="0 0 16 16"><path d="M8 2v12M2 8h12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></button>
           </div>
           <div class="strip__open">
             <div class="strip__top">
-              <span class="rv strip__label"><i class="dot"></i>01 / Introduction</span>
+              <span class="strip__label"><i class="dot"></i>01 / Introduction</span>
               <ul class="strip__tags">
                 <li class="tag" style="--i:0">UX Research</li>
                 <li class="tag" style="--i:1">UI Designer</li>
@@ -48,10 +61,10 @@
               </ul>
             </div>
             <div class="strip__content">
-              <h1 class="strip__title" data-split>Ashley Xie,<br>Product Designer</h1>
-              <p class="rv rv--desc strip__desc">A designer that creates sophisticated, data-heavy tools for people making high-stakes decisions.</p>
-              <a class="cta rc" href="#lennar" data-goto="1">
-                <span>Explore my work</span>
+              <h1 class="strip__title">Ashley Xie,<br>Product Designer</h1>
+              <p class="strip__desc">A designer that creates sophisticated, data-heavy tools for people making high-stakes decisions.</p>
+              <a class="cta" href="https://a2px.github.io/portfolio/about/">
+                <span>More on my background</span>
                 <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M3 10h14M11 4l6 6-6 6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
               </a>
             </div>
@@ -60,15 +73,14 @@
 
         <article class="strip strip--shot" id="lennar" style="--accent:#BDE274;--on-accent:#1a1a1a;--tone:#c6c6c6">
           <div class="strip__media"><img class="strip__img" src="images/lennar.webp" alt="" loading="lazy" /></div>
-          <button class="strip__trigger" aria-expanded="false" aria-label="02, Lennar Investor Marketplace"></button>
-          <div class="strip__closed" aria-hidden="true">
-            <span class="strip__num">02</span>
-            <span class="strip__vt"><span class="strip__vtitle">Lennar Investor Marketplace</span></span>
-            <span class="strip__plw"><span class="strip__plus"><span class="strip__pf"></span><svg class="strip__pi" width="16" height="16" viewBox="0 0 16 16"><path d="M8 2v12M2 8h12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span></span>
+          <div class="strip__closed">
+            <span class="strip__num" aria-hidden="true">02</span>
+            <span class="strip__vt" aria-hidden="true"><span class="strip__vtitle">Lennar Investor Marketplace</span></span>
+            <button class="strip__plus" aria-expanded="false" aria-label="Open 02, Lennar Investor Marketplace"><span class="strip__pf"></span><svg class="strip__pi" width="16" height="16" viewBox="0 0 16 16"><path d="M8 2v12M2 8h12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></button>
           </div>
           <div class="strip__open">
             <div class="strip__top">
-              <span class="rv strip__label"><i class="dot"></i>02 / Case study</span>
+              <span class="strip__label"><i class="dot"></i>02 / Case study</span>
               <ul class="strip__tags">
                 <li class="tag" style="--i:0">Marketplace</li>
                 <li class="tag" style="--i:1">Data-heavy UI</li>
@@ -76,9 +88,9 @@
               </ul>
             </div>
             <div class="strip__content">
-              <h2 class="strip__title" data-split>Lennar Investor Marketplace</h2>
-              <p class="rv rv--desc strip__desc">6,500+ users and about $300M in accumulated offer value on a marketplace for real estate investors.</p>
-              <a class="cta rc" href="https://a2px.github.io/portfolio/lennar/">
+              <h2 class="strip__title">Lennar Investor Marketplace</h2>
+              <p class="strip__desc">6,500+ users and about $300M in accumulated offer value on a marketplace for real estate investors.</p>
+              <a class="cta" href="https://a2px.github.io/portfolio/lennar/">
                 <span>View case study</span>
                 <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M3 10h14M11 4l6 6-6 6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
               </a>
@@ -88,24 +100,23 @@
 
         <article class="strip strip--shot" style="--accent:#2D5BE0;--on-accent:#fff;--tone:#b9b9b9">
           <div class="strip__media"><img class="strip__img" src="images/locate-alpha.webp" alt="" loading="lazy" /></div>
-          <button class="strip__trigger" aria-expanded="false" aria-label="03, Locate Alpha Website and Branding"></button>
-          <div class="strip__closed" aria-hidden="true">
-            <span class="strip__num">03</span>
-            <span class="strip__vt"><span class="strip__vtitle">Locate Alpha Website and Branding</span></span>
-            <span class="strip__plw"><span class="strip__plus"><span class="strip__pf"></span><svg class="strip__pi" width="16" height="16" viewBox="0 0 16 16"><path d="M8 2v12M2 8h12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span></span>
+          <div class="strip__closed">
+            <span class="strip__num" aria-hidden="true">03</span>
+            <span class="strip__vt" aria-hidden="true"><span class="strip__vtitle">Locate Alpha Website and Branding</span></span>
+            <button class="strip__plus" aria-expanded="false" aria-label="Open 03, Locate Alpha Website and Branding"><span class="strip__pf"></span><svg class="strip__pi" width="16" height="16" viewBox="0 0 16 16"><path d="M8 2v12M2 8h12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></button>
           </div>
           <div class="strip__open">
             <div class="strip__top">
-              <span class="rv strip__label"><i class="dot"></i>03 / Case study</span>
+              <span class="strip__label"><i class="dot"></i>03 / Case study</span>
               <ul class="strip__tags">
                 <li class="tag" style="--i:0">Branding</li>
                 <li class="tag" style="--i:1">Web design</li>
               </ul>
             </div>
             <div class="strip__content">
-              <h2 class="strip__title" data-split>Locate Alpha Website and Branding</h2>
-              <p class="rv rv--desc strip__desc">Brand storytelling for a data company, now drawing 1,100+ monthly visitors.</p>
-              <a class="cta rc" href="https://a2px.github.io/portfolio/locate-alpha/">
+              <h2 class="strip__title">Locate Alpha Website and Branding</h2>
+              <p class="strip__desc">Brand storytelling for a data company, now drawing 1,100+ monthly visitors.</p>
+              <a class="cta" href="https://a2px.github.io/portfolio/locate-alpha/">
                 <span>View case study</span>
                 <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M3 10h14M11 4l6 6-6 6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
               </a>
@@ -115,24 +126,23 @@
 
         <article class="strip strip--shot" style="--accent:#9AA17A;--on-accent:#fff;--tone:#acacac">
           <div class="strip__media"><img class="strip__img" src="images/cma.webp" alt="" loading="lazy" style="object-position:50% 20%" /></div>
-          <button class="strip__trigger" aria-expanded="false" aria-label="04, Comparative Market Analysis"></button>
-          <div class="strip__closed" aria-hidden="true">
-            <span class="strip__num">04</span>
-            <span class="strip__vt"><span class="strip__vtitle">Comparative Market Analysis</span></span>
-            <span class="strip__plw"><span class="strip__plus"><span class="strip__pf"></span><svg class="strip__pi" width="16" height="16" viewBox="0 0 16 16"><path d="M8 2v12M2 8h12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span></span>
+          <div class="strip__closed">
+            <span class="strip__num" aria-hidden="true">04</span>
+            <span class="strip__vt" aria-hidden="true"><span class="strip__vtitle">Comparative Market Analysis</span></span>
+            <button class="strip__plus" aria-expanded="false" aria-label="Open 04, Comparative Market Analysis"><span class="strip__pf"></span><svg class="strip__pi" width="16" height="16" viewBox="0 0 16 16"><path d="M8 2v12M2 8h12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></button>
           </div>
           <div class="strip__open">
             <div class="strip__top">
-              <span class="rv strip__label"><i class="dot"></i>04 / Mini project</span>
+              <span class="strip__label"><i class="dot"></i>04 / Mini project</span>
               <ul class="strip__tags">
                 <li class="tag" style="--i:0">Maps</li>
                 <li class="tag" style="--i:1">UX writing</li>
               </ul>
             </div>
             <div class="strip__content">
-              <h2 class="strip__title" data-split>Comparative Market Analysis</h2>
-              <p class="rv rv--desc strip__desc">Cleaning up an awkward map menu so its layer controls, coloring modes and slide-out panel are easy to find.</p>
-              <a class="cta rc" href="https://a2px.github.io/portfolio/#mini-projects-heading">
+              <h2 class="strip__title">Comparative Market Analysis</h2>
+              <p class="strip__desc">Cleaning up an awkward map menu so its layer controls, coloring modes and slide-out panel are easy to find.</p>
+              <a class="cta" href="https://a2px.github.io/portfolio/#mini-projects-heading">
                 <span>See the redesign</span>
                 <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M3 10h14M11 4l6 6-6 6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
               </a>
@@ -142,24 +152,23 @@
 
         <article class="strip strip--shot" style="--accent:#63664B;--on-accent:#fff;--tone:#9d9d9d">
           <div class="strip__media"><img class="strip__img" src="images/mark-spain.webp" alt="" loading="lazy" /></div>
-          <button class="strip__trigger" aria-expanded="false" aria-label="05, Mark Spain Real Estate"></button>
-          <div class="strip__closed" aria-hidden="true">
-            <span class="strip__num">05</span>
-            <span class="strip__vt"><span class="strip__vtitle">Mark Spain Real Estate</span></span>
-            <span class="strip__plw"><span class="strip__plus"><span class="strip__pf"></span><svg class="strip__pi" width="16" height="16" viewBox="0 0 16 16"><path d="M8 2v12M2 8h12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span></span>
+          <div class="strip__closed">
+            <span class="strip__num" aria-hidden="true">05</span>
+            <span class="strip__vt" aria-hidden="true"><span class="strip__vtitle">Mark Spain Real Estate</span></span>
+            <button class="strip__plus" aria-expanded="false" aria-label="Open 05, Mark Spain Real Estate"><span class="strip__pf"></span><svg class="strip__pi" width="16" height="16" viewBox="0 0 16 16"><path d="M8 2v12M2 8h12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></button>
           </div>
           <div class="strip__open">
             <div class="strip__top">
-              <span class="rv strip__label"><i class="dot"></i>05 / Case study</span>
+              <span class="strip__label"><i class="dot"></i>05 / Case study</span>
               <ul class="strip__tags">
                 <li class="tag" style="--i:0">B2B</li>
                 <li class="tag" style="--i:1">Marketplace</li>
               </ul>
             </div>
             <div class="strip__content">
-              <h2 class="strip__title" data-split>Mark Spain Real Estate</h2>
-              <p class="rv rv--desc strip__desc">A closed B2B marketplace built to carry 50,000+ listings.</p>
-              <a class="cta rc" href="https://a2px.github.io/portfolio/mark-spain/">
+              <h2 class="strip__title">Mark Spain Real Estate</h2>
+              <p class="strip__desc">A closed B2B marketplace built to carry 50,000+ listings.</p>
+              <a class="cta" href="https://a2px.github.io/portfolio/mark-spain/">
                 <span>View case study</span>
                 <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M3 10h14M11 4l6 6-6 6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
               </a>

@@ -1,66 +1,38 @@
-// Accordion: one card open at a time. A mouse opens a card by hovering it;
-// touch and keyboard open it with a tap / Enter. No auto-advance.
+// Accordion: one card open at a time, opened only by its plus button.
+// Not opened on hover: a card growing under the mouse shifts the others,
+// which would put a new card under the pointer and set off a chain of opens.
 (function () {
   const strips = Array.from(document.querySelectorAll('.strip'));
-
-  // Split each headline into words and letters so they can reveal in sequence.
-  strips.forEach((strip) => {
-    const title = strip.querySelector('[data-split]');
-    if (!title) return;
-    let wi = 0, ci = 0;
-    const out = document.createDocumentFragment();
-    title.childNodes.forEach((node) => {
-      if (node.nodeName === 'BR') { out.appendChild(document.createElement('br')); return; }
-      node.textContent.split(/(\s+)/).forEach((part) => {
-        if (!part) return;
-        if (/^\s+$/.test(part)) { out.appendChild(document.createTextNode(' ')); return; }
-        const w = document.createElement('span');
-        w.className = 'w';
-        w.style.setProperty('--wi', wi++);
-        for (const ch of part) {
-          const c = document.createElement('span');
-          c.className = 'c';
-          c.style.setProperty('--ci', ci++);
-          c.textContent = ch;
-          w.appendChild(c);
-        }
-        out.appendChild(w);
-      });
-    });
-    title.setAttribute('aria-label', title.textContent.replace(/\s+/g, ' ').trim());
-    title.textContent = '';
-    title.appendChild(out);
-    strip.style.setProperty('--cn', ci);
-  });
 
   function open(target) {
     strips.forEach((s) => {
       const on = s === target;
       s.toggleAttribute('data-open', on);
-      s.querySelector('.strip__trigger').setAttribute('aria-expanded', String(on));
+      s.querySelector('.strip__plus').setAttribute('aria-expanded', String(on));
       s.querySelector('.strip__open').inert = !on;
     });
   }
 
   strips.forEach((strip) => {
-    strip.querySelector('.strip__trigger').addEventListener('click', () => open(strip));
-    strip.addEventListener('pointerenter', (e) => {
-      if (e.pointerType === 'mouse' && !strip.hasAttribute('data-open')) open(strip);
-    });
-  });
-
-  // "Explore my work" opens the first project instead of jumping the page.
-  document.querySelectorAll('[data-goto]').forEach((link) => {
-    link.addEventListener('click', (e) => {
-      e.preventDefault();
-      const next = strips[Number(link.dataset.goto)];
-      open(next);
-      next.querySelector('.strip__trigger').focus({ preventScroll: true });
-      if (matchMedia('(max-width: 760px)').matches) {
-        setTimeout(() => next.scrollIntoView({ behavior: 'smooth', block: 'start' }), 350);
-      }
-    });
+    strip.querySelector('.strip__plus').addEventListener('click', () => open(strip));
   });
 
   open(strips.find((s) => s.hasAttribute('data-open')) || strips[0]);
+})();
+
+// Phone menu: the burger shows the three pages and Get in touch.
+(function () {
+  const burger = document.querySelector('.nav__burger');
+  const menu = document.getElementById('menu');
+  function setOpen(on) {
+    menu.hidden = !on;
+    burger.setAttribute('aria-expanded', String(on));
+    burger.setAttribute('aria-label', on ? 'Close menu' : 'Menu');
+  }
+  burger.addEventListener('click', () => setOpen(menu.hidden));
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && !menu.hidden) { setOpen(false); burger.focus(); } });
+  document.addEventListener('click', (e) => {
+    if (!menu.hidden && !menu.contains(e.target) && !burger.contains(e.target)) setOpen(false);
+  });
+  menu.querySelectorAll('a').forEach((a) => a.addEventListener('click', () => setOpen(false)));
 })();
