@@ -1,5 +1,6 @@
 /* Portfolio26F, accordion iteration.
-   Greyscale base, one accent colour per card (set inline as --accent / --on-accent).
+   Black type on light panels; each card has its own colour (set inline as --accent,
+   --on-accent for text on it, and --tint for its open panel).
    Motion follows the Swatch Accordion reference: a 0.75s spring with 0.1 bounce,
    rendered below as a CSS linear() curve that settles in 1.05s. */
 
@@ -86,7 +87,7 @@ a { color: inherit; text-decoration: none; }
   border-radius: var(--radius);
   overflow: hidden;
   isolation: isolate;
-  background: linear-gradient(to bottom, var(--tone) 0%, color-mix(in srgb, var(--tone) 85%, #fff) 45%, var(--grey-1) 100%);
+  background: linear-gradient(to bottom, color-mix(in srgb, var(--accent) 92%, #000) 0%, var(--accent) 45%, color-mix(in srgb, var(--accent) 70%, #fff) 100%);
   transition: flex-grow var(--dur) var(--spring-fallback), flex-basis var(--dur) var(--spring-fallback), height var(--dur) var(--spring-fallback);
   -webkit-tap-highlight-color: transparent;
 }
@@ -102,23 +103,28 @@ a { color: inherit; text-decoration: none; }
 }
 .strip[data-open]::after { box-shadow: inset 0 0 0 1px rgba(0,0,0,.9); }
 
-/* Open card: blank light panel; the photo's centre sits on the card's bottom-right
-   corner, so its top-left quarter fills the lower right of the card.
-   Sized from the open width so it never resizes while the card grows. */
+/* Open card: blank light panel on the left; on project cards the screenshot sits in a
+   framed window from the middle of the card, running off the right edge, zoomed in on
+   its top-left (each card sets --zoom and --pos). Sizes come from the open width so
+   nothing resizes while the card grows. */
 .strip__media {
   position: absolute; inset: 0; z-index: 0; overflow: hidden; border-radius: inherit;
-  background: var(--grey-1);
+  background: var(--tint, var(--grey-1));
   opacity: 0; transition: opacity .3s ease;
 }
 .strip[data-open] .strip__media { opacity: 1; transition: opacity .45s ease .1s; }
-.strip__img {
-  position: absolute; left: var(--open-w); top: 100%;
-  transform: translate(-50%, -50%);
-  width: calc(var(--open-w) * .9); height: auto; max-width: none;
-  display: block; user-select: none; pointer-events: none;
-  filter: grayscale(1) contrast(1.02);
+.strip__frame {
+  position: absolute; left: calc(var(--open-w) * .5); top: 17%; bottom: 7.5%;
+  width: calc(var(--open-w) * .6);
+  border: 2px solid var(--ink); border-right: 0; border-radius: 22px 0 0 22px;
+  overflow: hidden; background: #fff;
 }
-
+.strip__img {
+  position: absolute; inset: 0; width: 100%; height: 100%; max-width: none;
+  object-fit: cover; object-position: var(--pos, 0 0);
+  transform: scale(var(--zoom, 1.4)); transform-origin: var(--pos, 0 0);
+  display: block; user-select: none; pointer-events: none;
+}
 
 /* Intro card keeps the full-bleed photo with a soft wash at the bottom so the headline reads */
 .strip--intro .strip__img {
@@ -128,7 +134,7 @@ a { color: inherit; text-decoration: none; }
 .strip--intro .strip__media::after {
   content: ""; position: absolute; inset: 0; pointer-events: none;
   background:
-    linear-gradient(to top, rgba(244,244,244,.97) 0%, rgba(244,244,244,.92) 45%, rgba(244,244,244,.45) 68%, transparent 85%),
+    linear-gradient(to top, color-mix(in srgb, var(--tint) 97%, transparent) 0%, color-mix(in srgb, var(--tint) 92%, transparent) 45%, color-mix(in srgb, var(--tint) 45%, transparent) 68%, transparent 85%),
     linear-gradient(to bottom, rgba(255,255,255,.35) 0%, transparent 18%);
 }
 .strip--intro .strip__content { max-width: none; }
@@ -136,6 +142,7 @@ a { color: inherit; text-decoration: none; }
 
 /* Closed state: number, sideways title, plus */
 .strip__closed {
+  color: var(--on-accent);
   transition: opacity .3s ease .45s;
   position: absolute; top: 0; bottom: 0; left: 0; width: min(100%, calc(var(--closed) + 14px));
   z-index: 4; pointer-events: none;
@@ -170,7 +177,7 @@ a { color: inherit; text-decoration: none; }
 .strip__plus:focus-visible { box-shadow: 0 0 0 2px #fff, 0 0 0 4px var(--accent); }
 /* Accent fill wipes up from the bottom on hover */
 .strip__pf {
-  position: absolute; inset: -1px; background: var(--accent);
+  position: absolute; inset: -1px; background: var(--ink);
   clip-path: inset(100% 0 0 0);
   transition: clip-path .45s var(--out);
 }
@@ -179,7 +186,7 @@ a { color: inherit; text-decoration: none; }
 @media (hover: hover) {
   .strip:not([data-open]):hover { flex-basis: calc(var(--closed) + 14px); }
   .strip:not([data-open]):hover .strip__pf { clip-path: inset(0 0 0 0); }
-  .strip:not([data-open]):hover .strip__pi { transform: rotate(90deg); color: var(--on-accent); }
+  .strip:not([data-open]):hover .strip__pi { transform: rotate(90deg); color: #fff; }
   .strip:not([data-open]):hover .strip__vtitle { transform: rotate(180deg) translateX(4px); }
 }
 .strip__plus:active { transform: scale(.9); }
@@ -207,7 +214,7 @@ a { color: inherit; text-decoration: none; }
   background: rgba(255,255,255,.86); border: 1px solid rgba(0,0,0,.08);
 }
 
-.strip__content { width: min(680px, 100%); max-width: calc(var(--open-w) * .55 - var(--pad)); display: flex; flex-direction: column; align-items: flex-start; }
+.strip__content { width: min(680px, 100%); max-width: calc(var(--open-w) * .5 - var(--pad) - 24px); display: flex; flex-direction: column; align-items: flex-start; }
 .strip__title {
   margin: 0 0 16px;
   font-size: clamp(40px, 4.4vw, 64px); font-weight: 600; letter-spacing: -.035em; line-height: 1;
@@ -223,7 +230,7 @@ a { color: inherit; text-decoration: none; }
   width: 64px; height: 64px; flex: none; border-radius: 14px; overflow: hidden;
   background: var(--paper); border: 1px solid rgba(0,0,0,.08);
 }
-.logo img { width: 100%; height: 100%; object-fit: contain; display: block; filter: grayscale(1); }
+.logo img { width: 100%; height: 100%; object-fit: contain; display: block; }
 
 .cta {
   pointer-events: auto;
@@ -273,12 +280,12 @@ a { color: inherit; text-decoration: none; }
   .strip {
     flex: none; height: var(--bar);
     transition-property: height;
-    background: linear-gradient(to right, var(--tone) 0%, color-mix(in srgb, var(--tone) 70%, #fff) 100%);
+    background: linear-gradient(to right, var(--accent) 0%, color-mix(in srgb, var(--accent) 75%, #fff) 100%);
   }
-  .strip[data-open] { height: calc(75cqw + 300px); background: var(--grey-1); }
+  .strip[data-open] { height: calc(75cqw + 300px); background: var(--tint); }
 
-  .strip__img {
-    left: 0; top: 0; transform: none; width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover;
+  .strip__frame { left: var(--pad); right: 0; width: auto; top: 64px; bottom: auto; height: calc(75cqw - 56px); border-radius: 18px 0 0 18px; }
+  .strip--intro .strip__img {
     -webkit-mask-image: linear-gradient(to bottom, #000 62%, transparent 100%);
     mask-image: linear-gradient(to bottom, #000 62%, transparent 100%);
   }
@@ -297,7 +304,7 @@ a { color: inherit; text-decoration: none; }
   .strip__tags { display: none; }
   .strip__title { font-size: clamp(36px, 11cqw, 48px); margin-bottom: 12px; }
   .strip__content { max-width: none; }
-  .strip--intro .strip__img { width: 100%; height: auto; }
+  .strip--intro .strip__img { width: 100%; height: auto; aspect-ratio: 4 / 3; }
   .strip--intro .strip__media::after { background: none; }
   .strip__desc { font-size: 17px; margin-bottom: 20px; max-width: 40ch; }
   .cta { min-height: 48px; gap: 20px; }
