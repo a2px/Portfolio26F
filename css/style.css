@@ -4,6 +4,13 @@
    Motion follows the Swatch Accordion reference: a 0.75s spring with 0.1 bounce,
    rendered below as a CSS linear() curve that settles in 1.05s. */
 
+/* PP Frama (Pangram Pangram, free-for-personal-use cut): display cut for headings,
+   Text cut for everything else. Only Regular exists in this cut, so bold is never faked. */
+@font-face { font-family: 'PP Frama'; src: url('../fonts/PPFrama-Regular.otf') format('opentype'); font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: 'PP Frama'; src: url('../fonts/PPFrama-RegularItalic.otf') format('opentype'); font-weight: 400; font-style: italic; font-display: swap; }
+@font-face { font-family: 'PP Frama Text'; src: url('../fonts/PPFramaText-Regular.otf') format('opentype'); font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: 'PP Frama Text'; src: url('../fonts/PPFramaText-RegularItalic.otf') format('opentype'); font-weight: 400; font-style: italic; font-display: swap; }
+
 :root {
   --ink: #111;
   --ink-2: #3a3a3a;
@@ -20,12 +27,14 @@
 html { -webkit-text-size-adjust: 100%; }
 body {
   margin: 0;
-  font-family: "Inter", system-ui, -apple-system, sans-serif;
+  font-family: "PP Frama Text", system-ui, -apple-system, sans-serif;
+  font-synthesis: none;
   color: var(--ink);
   background: var(--paper);
   -webkit-font-smoothing: antialiased;
 }
 a { color: inherit; text-decoration: none; }
+.nav__name, .strip__title, .strip__vtitle { font-family: "PP Frama", system-ui, sans-serif; font-weight: 400; }
 
 /* ---------- Top bar ---------- */
 .nav {
@@ -34,7 +43,7 @@ a { color: inherit; text-decoration: none; }
   align-items: center;
   padding: 20px clamp(20px, 3.6vw, 48px);
 }
-.nav__name { font-size: 20px; font-weight: 600; letter-spacing: -.02em; }
+.nav__name { font-size: 21px; letter-spacing: 0; }
 .nav__tabs {
   display: flex; gap: 4px; padding: 4px;
   background: var(--grey-1); border-radius: 999px;
@@ -44,7 +53,7 @@ a { color: inherit; text-decoration: none; }
   transition: background .2s ease, color .2s ease;
 }
 .nav__tab:hover { color: var(--ink); }
-.nav__tab.is-active { background: #BDE274; color: var(--ink); font-weight: 500; }
+.nav__tab.is-active { background: #BDE274; color: var(--ink); }
 /* Get in touch: lime pill, blue circle, lime arrow; the two colours trade places on hover */
 .nav__cta, .menu__cta {
   --cta-a: #BDE274; --cta-b: #4476F6;
@@ -55,7 +64,7 @@ a { color: inherit; text-decoration: none; }
   justify-self: end;
   display: inline-flex; align-items: center; gap: 14px;
   padding: 5px 5px 5px 20px; border-radius: 999px;
-  font-size: 14px; font-weight: 500;
+  font-size: 14px;
 }
 .nav__cta-icon {
   display: grid; place-items: center; width: 36px; height: 36px; border-radius: 50%;
@@ -170,7 +179,7 @@ a { color: inherit; text-decoration: none; }
 }
 .strip[data-open] .strip__vt { opacity: 0; }
 .strip__vtitle {
-  font-size: clamp(20px, 2vw, 28px); font-weight: 500; letter-spacing: -.02em; white-space: nowrap; line-height: 1;
+  font-size: clamp(20px, 2vw, 28px); letter-spacing: 0; white-space: nowrap; line-height: 1;
   writing-mode: vertical-rl; transform: rotate(180deg);
   transition: transform .5s var(--out);
 }
@@ -214,7 +223,7 @@ a { color: inherit; text-decoration: none; }
 .strip__top { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; min-height: 30px; }
 .strip__label {
   display: inline-flex; align-items: center; gap: 8px; height: 30px; white-space: nowrap;
-  font-size: 13px; font-weight: 500; letter-spacing: .04em; text-transform: uppercase;
+  font-size: 13px; letter-spacing: .04em; text-transform: uppercase;
 }
 .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); }
 .strip__tags { list-style: none; display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 8px; margin: 0; padding: 0; max-width: 70%; }
@@ -227,14 +236,14 @@ a { color: inherit; text-decoration: none; }
 .strip__content { width: min(680px, 100%); max-width: calc(var(--open-w) * .5 - var(--pad) - 24px); display: flex; flex-direction: column; align-items: flex-start; }
 .strip__title {
   margin: 0 0 16px;
-  font-size: clamp(40px, 4.4vw, 64px); font-weight: 600; letter-spacing: -.035em; line-height: 1;
+  font-size: clamp(38px, 4vw, 56px); letter-spacing: -.01em; line-height: 1;
   text-wrap: balance;
 }
 .strip__desc { margin: 0 0 24px; font-size: clamp(17px, 1.5vw, 22px); line-height: 1.45; color: var(--ink-2); max-width: 30ch; }
 
 
 /* Client logos on the intro card: square blocks that wrap to the column width */
-.logos__label { margin: 0 0 10px; font-size: 13px; font-weight: 500; letter-spacing: .04em; text-transform: uppercase; color: var(--ink-2); }
+.logos__label { margin: 0 0 10px; font-size: 13px; letter-spacing: .04em; text-transform: uppercase; color: var(--ink-2); }
 .logos__grid { list-style: none; display: flex; flex-wrap: wrap; gap: 8px; margin: 0; padding: 0; max-width: calc(5 * 64px + 4 * 8px); }
 .logo {
   width: 64px; height: 64px; flex: none; border-radius: 14px; overflow: hidden;
@@ -246,7 +255,7 @@ a { color: inherit; text-decoration: none; }
   pointer-events: auto;
   display: inline-flex; align-items: center; gap: 28px;
   min-height: 52px; padding: 0 20px 0 24px; border-radius: 999px;
-  background: var(--ink); color: #fff; font-size: 16px; font-weight: 500; white-space: nowrap;
+  background: var(--ink); color: #fff; font-size: 16px; white-space: nowrap;
   box-shadow: 0 10px 24px -14px rgba(20,20,20,.55);
   transition: background .25s ease, color .25s ease;
 }
@@ -276,12 +285,12 @@ a { color: inherit; text-decoration: none; }
     background: var(--paper); box-shadow: 0 0 0 1px rgba(0,0,0,.06), 0 24px 48px -20px rgba(20,20,20,.35);
   }
   .menu__links { display: flex; flex-direction: column; }
-  .menu__link { padding: 16px 18px; border-radius: 16px; font-size: 20px; font-weight: 500; letter-spacing: -.01em; }
+  .menu__link { padding: 16px 18px; border-radius: 16px; font-size: 20px; letter-spacing: -.01em; }
   .menu__link.is-active { background: var(--grey-1); }
   .menu__cta {
     display: flex; align-items: center; justify-content: space-between;
     min-height: 52px; padding: 6px 6px 6px 22px; border-radius: 999px;
-    font-size: 16px; font-weight: 500;
+    font-size: 16px;
   }
   .menu__cta .nav__cta-icon { width: 40px; height: 40px; }
 
