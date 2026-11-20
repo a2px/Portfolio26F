@@ -121,7 +121,7 @@ a { color: inherit; text-decoration: none; }
   box-shadow: inset 0 0 0 1px rgba(0,0,0,.08);
   transition: box-shadow .4s ease;
 }
-.strip[data-open]::after { box-shadow: inset 0 0 0 1px rgba(0,0,0,.9); }
+.strip[data-open]::after { box-shadow: inset 0 0 0 1.5px #4476F6; }
 
 /* Open card: blank light panel on the left; on project cards the screenshot sits in a
    framed window from the middle of the card, running off the right edge, zoomed in on
