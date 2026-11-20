@@ -1,4 +1,5 @@
-// Accordion: one card open at a time, opened only by its plus button.
+// Accordion: one card open at a time, opened by clicking anywhere on a closed card
+// (the plus is the keyboard-focusable button for the same thing).
 // Not opened on hover: a card growing under the mouse shifts the others,
 // which would put a new card under the pointer and set off a chain of opens.
 (function () {
@@ -14,7 +15,7 @@
   }
 
   strips.forEach((strip) => {
-    strip.querySelector('.strip__plus').addEventListener('click', () => open(strip));
+    strip.addEventListener('click', () => { if (!strip.hasAttribute('data-open')) open(strip); });
   });
 
   open(strips.find((s) => s.hasAttribute('data-open')) || strips[0]);
