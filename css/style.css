@@ -84,8 +84,8 @@ a { color: inherit; text-decoration: none; }
 /* ---------- Accordion ---------- */
 .acc {
   container-type: inline-size;
-  /* Cards never get wider than 1200px; extra space goes to equal side margins */
-  padding: clamp(16px, 4vh, 56px) max(clamp(20px, 4.6vw, 64px), (100% - 1200px) / 2) 48px;
+  /* Cards never get wider than 1400px; extra space goes to equal side margins */
+  padding: clamp(16px, 4vh, 56px) max(clamp(20px, 4.6vw, 64px), (100% - 1400px) / 2) 48px;
   --n: 5;
   --closed: 92px;
   --gap: 12px;
@@ -221,12 +221,7 @@ a { color: inherit; text-decoration: none; }
   transition: opacity .12s ease, visibility 0s linear .12s;
 }
 .strip[data-open] .strip__open { visibility: visible; opacity: 1; transition: opacity .35s ease .35s; }
-.strip__top { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; min-height: 30px; }
-.strip__label {
-  display: inline-flex; align-items: center; gap: 8px; height: 30px; white-space: nowrap;
-  font-size: 14px; font-style: italic;
-}
-.dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); }
+.strip__top { display: flex; align-items: flex-start; justify-content: flex-end; gap: 12px; min-height: 30px; }
 .strip__tags { list-style: none; display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 8px; margin: 0; padding: 0; max-width: 70%; }
 .tag {
   display: inline-flex; align-items: center; height: 30px; padding: 0 14px; border-radius: 999px;
