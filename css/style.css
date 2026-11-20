@@ -224,7 +224,7 @@ a { color: inherit; text-decoration: none; }
 .strip__top { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; min-height: 30px; }
 .strip__label {
   display: inline-flex; align-items: center; gap: 8px; height: 30px; white-space: nowrap;
-  font-size: 13px; letter-spacing: .04em; text-transform: uppercase;
+  font-size: 14px; font-style: italic;
 }
 .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); }
 .strip__tags { list-style: none; display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 8px; margin: 0; padding: 0; max-width: 70%; }
@@ -244,7 +244,7 @@ a { color: inherit; text-decoration: none; }
 
 
 /* Client logos on the intro card: square blocks that wrap to the column width */
-.logos__label { margin: 0 0 10px; font-size: 13px; letter-spacing: .04em; text-transform: uppercase; color: var(--ink-2); }
+.logos__label { margin: 0 0 10px; font-size: 14px; font-style: italic; color: var(--ink-2); }
 .logos__grid { list-style: none; display: flex; flex-wrap: wrap; gap: 8px; margin: 0; padding: 0; }
 .logo {
   width: 64px; height: 64px; flex: none; border-radius: 14px; overflow: hidden;
