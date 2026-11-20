@@ -54,7 +54,7 @@ a { color: inherit; text-decoration: none; }
   transition: background .2s ease, color .2s ease;
 }
 .nav__tab:hover { color: var(--ink); }
-.nav__tab.is-active { background: #BDE274; color: var(--ink); }
+.nav__tab.is-active { background: var(--paper); color: var(--ink); box-shadow: 0 1px 2px rgba(0,0,0,.06); }
 /* Get in touch: lime pill, blue circle, lime arrow; the two colours trade places on hover */
 .nav__cta, .menu__cta {
   --cta-a: #BDE274; --cta-b: #4476F6;
