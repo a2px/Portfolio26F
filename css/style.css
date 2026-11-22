@@ -63,8 +63,9 @@ a { color: inherit; text-decoration: none; }
 .nav__tab.is-active { background: var(--paper); color: var(--ink); box-shadow: 0 1px 2px rgba(0,0,0,.06); }
 /* Get in touch: lime pill, blue circle, lime arrow; the two colours trade places on hover */
 .nav__cta, .menu__cta {
-  --cta-a: var(--lime); --cta-b: var(--cobalt);
-  background: var(--cta-a); color: var(--ink);
+  /* Resting: Cobalt pill, Lime circle, Cobalt arrow. Hover swaps to Lime pill, Cobalt circle, Lime arrow. */
+  --cta-a: var(--cobalt); --cta-b: var(--lime);
+  background: var(--cta-a); color: var(--paper);
   transition: background .25s ease, color .25s ease;
 }
 .nav__cta {
@@ -78,10 +79,10 @@ a { color: inherit; text-decoration: none; }
   background: var(--cta-b); color: var(--cta-a);
   transition: background .25s ease, color .25s ease, transform .45s var(--out);
 }
-.nav__cta:hover, .menu__cta:hover, .menu__cta:active { background: var(--cta-b); color: var(--paper); }
+.nav__cta:hover, .menu__cta:hover, .menu__cta:active { background: var(--cta-b); color: var(--ink); }
 .nav__cta:hover .nav__cta-icon, .menu__cta:hover .nav__cta-icon, .menu__cta:active .nav__cta-icon { background: var(--cta-a); color: var(--cta-b); }
 .nav__cta:hover .nav__cta-icon { transform: rotate(45deg); }
-.nav__cta:focus-visible, .menu__cta:focus-visible { outline: 2px solid var(--cta-b); outline-offset: 3px; }
+.nav__cta:focus-visible, .menu__cta:focus-visible { outline: 2px solid var(--cobalt); outline-offset: 3px; }
 
 /* Phone menu (shown only below 760px) */
 .nav { position: relative; }
@@ -173,7 +174,7 @@ a { color: inherit; text-decoration: none; }
 .strip--intro .strip__content { max-width: none; }
 .strip--intro .strip__desc { max-width: 40ch; }
 
-/* Closed state: number, sideways title, plus */
+/* Closed state: sideways title, plus */
 .strip__closed {
   color: var(--on-accent);
   transition: opacity .3s ease .45s;
@@ -182,12 +183,7 @@ a { color: inherit; text-decoration: none; }
   display: flex; flex-direction: column; align-items: center; justify-content: space-between;
   padding: var(--pad) 0 calc(var(--pad) + 3px);
 }
-.strip__num {
-  font-size: 13px; letter-spacing: .02em; font-variant-numeric: tabular-nums; height: 30px;
-  display: inline-flex; align-items: center;
-}
 .strip[data-open] .strip__closed { opacity: 0; transition: opacity .12s ease; }
-.strip[data-open] .strip__num { opacity: 0; }
 .strip__vt {
   display: flex; margin-top: auto; margin-bottom: 22px;
 }
@@ -322,7 +318,6 @@ a { color: inherit; text-decoration: none; }
     width: auto; right: 0; flex-direction: row; justify-content: flex-start; gap: 16px;
     padding: 0 12px 0 var(--pad);
   }
-  .strip__num { min-width: 22px; }
   .strip__vt { margin: 0 auto 0 0; flex: 1; min-width: 0; }
   .strip__vtitle { writing-mode: horizontal-tb; transform: none; font-size: 19px; overflow: hidden; text-overflow: ellipsis; }
   .strip:not([data-open]):hover .strip__vtitle { transform: translateX(4px); }
