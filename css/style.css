@@ -506,7 +506,7 @@ a.exp__company:focus-visible { outline: 2px solid var(--cobalt); outline-offset:
 .play__card { display: block; color: inherit; }
 .play__media {
   position: relative; aspect-ratio: 16 / 9; overflow: hidden; border-radius: 22px;
-  background: var(--mist); border: 1px solid var(--line); margin-bottom: 24px;
+  background: var(--mist); border: 1px solid var(--line); margin-bottom: 20px;
 }
 .play__media img, .play__media video, .play__soon { width: 100%; height: 100%; object-fit: cover; object-position: top center; display: block; transition: transform .6s var(--out); }
 .play__meta { margin: 0 0 10px; font-size: 15px; font-style: italic; color: var(--body); }
@@ -526,6 +526,6 @@ a.play__card:focus-visible { outline: 2px solid var(--cobalt); outline-offset: 6
 @media (max-width: 760px) {
   .play { padding: 20px 16px 64px; }
   .play__grid { grid-template-columns: 1fr; gap: 40px; }
-  .play__media { border-radius: 16px; margin-bottom: 18px; }
+  .play__media { border-radius: 16px; margin-bottom: 16px; }
   .play__go { width: 40px; height: 40px; top: 12px; right: 12px; }
 }
