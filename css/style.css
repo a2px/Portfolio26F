@@ -415,6 +415,13 @@ a { color: inherit; text-decoration: none; }
   display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr) 128px; gap: 16px; align-items: baseline;
   padding: 22px 0; border-bottom: 1px solid var(--line); font-size: 18px;
 }
+a.exp__company {
+  justify-self: start; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 4px;
+  text-decoration-color: color-mix(in srgb, var(--ink) 30%, transparent);
+  transition: color .2s ease, text-decoration-color .2s ease;
+}
+a.exp__company:hover { color: var(--cobalt); text-decoration-color: var(--cobalt); }
+a.exp__company:focus-visible { outline: 2px solid var(--cobalt); outline-offset: 3px; border-radius: 4px; }
 .exp__role { color: var(--body); }
 .exp__date { color: var(--body); font-variant-numeric: tabular-nums; text-align: right; }
 
