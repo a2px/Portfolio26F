@@ -22,14 +22,42 @@
 (function () {
   const strips = Array.from(document.querySelectorAll('.strip'));
 
+  // Card videos (the old portfolio's screen recordings): each loads the first time its card is
+  // hovered, focused or opened, plays only while its card is open, and skips the fade-in from
+  // white at the start. With reduced motion the still frame stays.
+  const still = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function loadVideo(s) {
+    const v = s.querySelector('video[data-card-mp4]');
+    if (!v || v.dataset.loaded) return v;
+    v.dataset.loaded = '1';
+    [['cardWebm', 'video/webm'], ['cardMp4', 'video/mp4']].forEach(([k, type]) => {
+      const src = document.createElement('source'); src.src = v.dataset[k]; src.type = type; v.appendChild(src);
+    });
+    v.preload = 'auto';
+    v.addEventListener('loadedmetadata', () => { if (v.currentTime < 1) v.currentTime = 1; }, { once: true });
+    v.load();
+    return v;
+  }
+  function syncVideo(s, on) {
+    if (still) return;
+    const v = on ? loadVideo(s) : s.querySelector('video[data-card-mp4]');
+    if (!v) return;
+    if (on) v.play().catch(() => {}); else v.pause();
+  }
+
   function open(target) {
     strips.forEach((s) => {
       const on = s === target;
       s.toggleAttribute('data-open', on);
       s.querySelector('.strip__plus').setAttribute('aria-expanded', String(on));
       s.querySelector('.strip__open').inert = !on;
+      syncVideo(s, on);
     });
   }
+  strips.forEach((s) => {
+    s.addEventListener('pointerenter', () => { if (!still) loadVideo(s); });
+    s.addEventListener('focusin', () => { if (!still) loadVideo(s); });
+  });
 
   strips.forEach((strip) => {
     strip.addEventListener('click', () => { if (!strip.hasAttribute('data-open')) open(strip); });
