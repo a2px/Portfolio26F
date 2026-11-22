@@ -21,6 +21,7 @@
   --mist: #DCE6FC;
   --olive: #62654B;
   --lime: #BDE173;
+  --apricot: #F4B860; /* warm accent, scheme B (2026-11-22) */
   --ink-2: var(--body);
   --grey-1: var(--line);
   --spring: linear(0, 0.0197, 0.0694, 0.1379, 0.2166, 0.2994, 0.382, 0.4613, 0.5354, 0.6033, 0.6644, 0.7186, 0.7661, 0.8072, 0.8424, 0.8723, 0.8975, 0.9185, 0.9359, 0.9501, 0.9617, 0.971, 0.9785, 0.9844, 0.989, 0.9926, 0.9953, 0.9973, 0.9988, 0.9998, 1.0006, 1.001, 1.0013, 1.0015, 1.0015, 1.0015, 1.0014, 1.0013, 1.0012, 1.0011, 1);
@@ -136,6 +137,9 @@ a { color: inherit; text-decoration: none; }
 }
 
 .strip {
+  /* Each card keeps its colour when open: --tint is the open background (lightest tint that
+     keeps body-grey text at 4.6:1), --edge the open outline. Set per card in the page. */
+  --tint: var(--mist); --edge: var(--cobalt);
   --open-w: calc(100cqw - (var(--n) - 1) * (var(--closed) + var(--gap)));
   position: relative;
   flex: 0 0 var(--closed);
@@ -157,7 +161,7 @@ a { color: inherit; text-decoration: none; }
   box-shadow: inset 0 0 0 1px rgba(20,20,19,.06);
   transition: box-shadow .4s ease;
 }
-.strip[data-open]::after { box-shadow: inset 0 0 0 1.5px var(--cobalt); }
+.strip[data-open]::after { box-shadow: inset 0 0 0 1.5px var(--edge); }
 
 /* Open card: blank light panel on the left; on project cards the screenshot sits in a
    framed window from the middle of the card, running off the right edge, zoomed in on
@@ -165,7 +169,7 @@ a { color: inherit; text-decoration: none; }
    nothing resizes while the card grows. */
 .strip__media {
   position: absolute; inset: 0; z-index: 0; overflow: hidden; border-radius: inherit;
-  background: var(--mist);
+  background: var(--tint);
   opacity: 0; transition: opacity .3s ease;
 }
 .strip[data-open] .strip__media { opacity: 1; transition: opacity .45s ease .1s; }
@@ -186,7 +190,7 @@ a { color: inherit; text-decoration: none; }
    lower part of the screenshot so the headline and description stand out */
 .strip--shot .strip__media::after {
   content: ""; position: absolute; inset: 0; pointer-events: none;
-  background: linear-gradient(to top, color-mix(in srgb, var(--mist) 97%, transparent) 0%, color-mix(in srgb, var(--mist) 85%, transparent) 22%, color-mix(in srgb, var(--mist) 35%, transparent) 45%, transparent 62%);
+  background: linear-gradient(to top, color-mix(in srgb, var(--tint) 97%, transparent) 0%, color-mix(in srgb, var(--tint) 85%, transparent) 22%, color-mix(in srgb, var(--tint) 35%, transparent) 45%, transparent 62%);
 }
 
 /* Intro card keeps the full-bleed photo with a soft wash at the bottom so the headline reads */
@@ -197,7 +201,7 @@ a { color: inherit; text-decoration: none; }
 .strip--intro .strip__media::after {
   content: ""; position: absolute; inset: 0; pointer-events: none;
   background:
-    linear-gradient(to top, color-mix(in srgb, var(--mist) 97%, transparent) 0%, color-mix(in srgb, var(--mist) 92%, transparent) 45%, color-mix(in srgb, var(--mist) 45%, transparent) 68%, transparent 85%),
+    linear-gradient(to top, color-mix(in srgb, var(--tint) 97%, transparent) 0%, color-mix(in srgb, var(--tint) 92%, transparent) 45%, color-mix(in srgb, var(--tint) 45%, transparent) 68%, transparent 85%),
     linear-gradient(to bottom, rgba(255,255,255,.35) 0%, transparent 18%);
 }
 .strip--intro .strip__content { max-width: none; }
@@ -207,7 +211,7 @@ a { color: inherit; text-decoration: none; }
    below holds the title, one line of description and the button. */
 @media (min-width: 761px) {
   .strip--shot { --band: 63%; --inset: calc(var(--open-w) * .075); }
-  .strip--shot .strip__media { background: linear-gradient(var(--mist) 0 var(--band), #fff var(--band)); }
+  .strip--shot .strip__media { background: linear-gradient(var(--tint) 0 var(--band), #fff var(--band)); }
   .strip--shot .strip__media::after { content: none; }
   .strip--shot .strip__frame {
     left: var(--inset); width: calc(var(--open-w) - 2 * var(--inset));
@@ -223,7 +227,7 @@ a { color: inherit; text-decoration: none; }
 }
 /* Phone: same idea stacked; pale blue top with the framed screenshot, white below for the text */
 @media (max-width: 760px) {
-  .strip--shot .strip__media { background: linear-gradient(var(--mist) 0 calc(75cqw + 8px), #fff calc(75cqw + 8px)); }
+  .strip--shot .strip__media { background: linear-gradient(var(--tint) 0 calc(75cqw + 8px), #fff calc(75cqw + 8px)); }
   .strip--shot .strip__media::after { content: none; }
   .strip--shot .strip__frame {
     left: var(--pad); right: var(--pad); width: auto;
@@ -386,7 +390,7 @@ a { color: inherit; text-decoration: none; }
     transition-property: height;
     background: var(--accent);
   }
-  .strip[data-open] { height: calc(75cqw + 300px); background: var(--mist); }
+  .strip[data-open] { height: calc(75cqw + 300px); background: var(--tint); }
 
   .strip__frame { left: var(--pad); right: 0; width: auto; top: 64px; bottom: auto; height: calc(75cqw - 56px); border-radius: 18px 0 0 18px; }
   .strip--intro .strip__img {
