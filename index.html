@@ -9,8 +9,14 @@
   <link rel="preload" href="fonts/PPFramaText-Regular.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="icon" type="image/svg+xml" href="images/star.svg" />
   <link rel="stylesheet" href="css/style.css" />
+  <!-- The loading screen shows once per visit; later page changes skip it so the tab pill can slide -->
+  <script>try{if(sessionStorage.getItem('p26-loaded'))document.documentElement.classList.add('no-loader')}catch(e){}</script>
 </head>
 <body>
+  <div class="loader" id="loader" role="status" aria-label="Loading">
+    <img class="loader__star" src="images/star.svg" alt="" aria-hidden="true" />
+    <span class="loader__name">Ashley Xie</span>
+  </div>
   <header class="nav">
     <a class="nav__name" href="./"><img class="nav__star" src="images/star.svg" alt="" aria-hidden="true" />Ashley Xie</a>
     <nav class="nav__tabs" aria-label="Main">
