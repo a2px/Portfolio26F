@@ -38,6 +38,28 @@
   open(strips.find((s) => s.hasAttribute('data-open')) || strips[0]);
 })();
 
+// Open project cards (desktop and mid-size): the pale blue band and screenshot end just above
+// the title block, however many lines the title and description take at this width.
+(function () {
+  const shots = Array.from(document.querySelectorAll('.strip--shot'));
+  if (!shots.length) return;
+  const GAP = 28;
+  function fit() {
+    const desktop = window.innerWidth > 760;
+    shots.forEach((s) => {
+      if (!desktop) { s.style.removeProperty('--band'); return; }
+      const content = s.querySelector('.strip__content');
+      const open = s.querySelector('.strip__open');
+      const padB = parseFloat(getComputedStyle(open).paddingBottom) || 0;
+      const band = s.clientHeight - content.offsetHeight - padB - GAP;
+      s.style.setProperty('--band', Math.max(band, s.clientHeight * 0.35) + 'px');
+    });
+  }
+  fit();
+  if (document.fonts) document.fonts.ready.then(fit);
+  window.addEventListener('resize', fit);
+})();
+
 // Phone menu: the burger shows the three pages and Get in touch.
 (function () {
   const burger = document.querySelector('.nav__burger');
