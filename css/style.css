@@ -6,10 +6,10 @@
 
 /* PP Frama (Pangram Pangram, free-for-personal-use cut): display cut for headings,
    Text cut for everything else. Only Regular exists in this cut, so bold is never faked. */
-@font-face { font-family: 'PP Frama'; src: url('../fonts/PPFrama-Regular.otf') format('opentype'); font-weight: 400; font-style: normal; font-display: swap; }
-@font-face { font-family: 'PP Frama'; src: url('../fonts/PPFrama-RegularItalic.otf') format('opentype'); font-weight: 400; font-style: italic; font-display: swap; }
-@font-face { font-family: 'PP Frama Text'; src: url('../fonts/PPFramaText-Regular.otf') format('opentype'); font-weight: 400; font-style: normal; font-display: swap; }
-@font-face { font-family: 'PP Frama Text'; src: url('../fonts/PPFramaText-RegularItalic.otf') format('opentype'); font-weight: 400; font-style: italic; font-display: swap; }
+@font-face { font-family: 'PP Frama'; src: url('../fonts/PPFrama-Regular.woff2') format('woff2'); font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: 'PP Frama'; src: url('../fonts/PPFrama-RegularItalic.woff2') format('woff2'); font-weight: 400; font-style: italic; font-display: swap; }
+@font-face { font-family: 'PP Frama Text'; src: url('../fonts/PPFramaText-Regular.woff2') format('woff2'); font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: 'PP Frama Text'; src: url('../fonts/PPFramaText-RegularItalic.woff2') format('woff2'); font-weight: 400; font-style: italic; font-display: swap; }
 
 :root {
   /* Palette: neutrals + four colours */
