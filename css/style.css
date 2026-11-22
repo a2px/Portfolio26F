@@ -98,6 +98,7 @@ a { color: inherit; text-decoration: none; }
   /* Resting: Ink pill, Lime circle, Ink arrow. Hover swaps to Lime pill, Ink circle, Lime arrow. */
   --cta-a: var(--ink); --cta-b: var(--lime);
   background: var(--cta-a); color: var(--paper);
+  font-weight: 700; font-synthesis: weight; /* bold label, thickened from the Regular cut */
   transition: background .25s ease, color .25s ease;
 }
 .nav__cta {
