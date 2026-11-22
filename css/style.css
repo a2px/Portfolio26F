@@ -92,8 +92,8 @@ a { color: inherit; text-decoration: none; }
 }
 /* Get in touch: the two colours trade places on hover */
 .nav__cta, .menu__cta {
-  /* Resting: Cobalt pill, Lime circle, Cobalt arrow. Hover swaps to Lime pill, Cobalt circle, Lime arrow. */
-  --cta-a: var(--cobalt); --cta-b: var(--lime);
+  /* Resting: Ink pill, Lime circle, Ink arrow. Hover swaps to Lime pill, Ink circle, Lime arrow. */
+  --cta-a: var(--ink); --cta-b: var(--lime);
   background: var(--cta-a); color: var(--paper);
   transition: background .25s ease, color .25s ease;
 }
