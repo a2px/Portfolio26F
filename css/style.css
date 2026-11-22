@@ -434,3 +434,91 @@ a { color: inherit; text-decoration: none; }
   .exp__role { grid-column: 1; grid-row: 2; font-size: 15px; }
   .exp__date { grid-column: 2; grid-row: 1; }
 }
+
+/* ---------- Case study page ---------- */
+.case {
+  padding: clamp(16px, 4vh, 56px) max(clamp(20px, 4.6vw, 64px), (100% - 1400px) / 2) 96px;
+  --pad: clamp(22px, 2.6vw, 40px);
+}
+/* Hero: same Mist card and framed screenshot as an open card on the homepage */
+.case__hero {
+  position: relative; overflow: hidden; isolation: isolate;
+  display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  min-height: clamp(480px, calc(100vh - 220px), 680px);
+  border-radius: 28px; background: var(--mist); box-shadow: inset 0 0 0 1.5px var(--cobalt);
+}
+.case__intro { display: flex; flex-direction: column; justify-content: space-between; gap: 32px; padding: var(--pad); }
+.case__tags { justify-content: flex-start; max-width: none; }
+.case__title {
+  margin: 0 0 16px; font-family: "PP Frama", system-ui, sans-serif; font-weight: 400;
+  font-size: clamp(40px, 4.6vw, 64px); line-height: 1; letter-spacing: -.01em;
+}
+.case__desc { margin: 0; font-size: clamp(17px, 1.5vw, 22px); line-height: 1.45; color: var(--body); max-width: 34ch; }
+.case__frame {
+  align-self: end; margin-top: 12%; height: 88%;
+  border: 2px solid var(--ink); border-right: 0; border-bottom: 0; border-radius: 22px 0 0 0;
+  overflow: hidden; background: #F3F3F3;
+}
+.case__frame img { width: 100%; height: 100%; object-fit: cover; object-position: 0 0; display: block; }
+
+/* Before and after, side by side */
+.ba { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 12px; }
+.ba__item { margin: 0; padding: var(--pad); border-radius: 28px; background: #fff; border: 1px solid var(--line); display: flex; flex-direction: column; gap: 24px; }
+.ba__media { border-radius: 18px; overflow: hidden; border: 1px solid var(--line); background: #F3F3F3; aspect-ratio: 3 / 4; }
+.ba__media video { width: 100%; height: 100%; object-fit: cover; object-position: 0 0; display: block; }
+.ba__label { margin: 0 0 8px; font-size: 14px; font-style: italic; color: var(--body); }
+.ba__text { margin: 0; font-size: 18px; line-height: 1.5; }
+.ba__list { margin: 0; padding: 0; list-style: none; font-size: 18px; line-height: 1.5; }
+.ba__list li { padding: 8px 0; border-bottom: 1px solid var(--line); }
+.ba__list li:last-child { border-bottom: 0; }
+
+.case__next { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 48px; padding: 0 var(--pad); }
+.case .cta:hover { background: var(--cobalt); color: var(--paper); box-shadow: none; }
+.case .cta:hover svg { transform: translateX(4px); }
+.case .cta:focus-visible { outline: 2px solid var(--cobalt); }
+
+@media (max-width: 760px) {
+  .case { padding: 16px 16px 64px; --pad: 22px; }
+  .case__hero { grid-template-columns: 1fr; min-height: 0; border-radius: 22px; }
+  .case__frame { margin: 0 0 0 var(--pad); height: auto; aspect-ratio: 4 / 3; border-radius: 18px 0 0 0; }
+  .ba { grid-template-columns: 1fr; gap: 8px; margin-top: 8px; }
+  .ba__item { border-radius: 22px; }
+  .ba__text, .ba__list { font-size: 16px; }
+  .case__next { margin-top: 32px; padding: 0 6px; }
+}
+
+/* ---------- Play page: two-column grid of side projects ---------- */
+.play {
+  padding: clamp(24px, 5vh, 64px) max(clamp(20px, 4.6vw, 64px), (100% - 1400px) / 2) 96px;
+}
+.play__heading {
+  margin: 0 0 clamp(32px, 5vh, 56px); font-family: "PP Frama", system-ui, sans-serif; font-weight: 400;
+  font-size: clamp(44px, 5vw, 72px); line-height: 1; letter-spacing: -.01em;
+}
+.play__grid { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: clamp(40px, 5vw, 72px) clamp(24px, 3.6vw, 56px); }
+.play__card { display: block; color: inherit; }
+.play__media {
+  position: relative; aspect-ratio: 16 / 9; overflow: hidden; border-radius: 22px;
+  background: var(--mist); border: 1px solid var(--line); margin-bottom: 24px;
+}
+.play__media img, .play__soon { width: 100%; height: 100%; object-fit: cover; object-position: top center; display: block; transition: transform .6s var(--out); }
+.play__meta { margin: 0 0 10px; font-size: 15px; font-style: italic; color: var(--body); }
+.play__title { margin: 0 0 10px; font-family: "PP Frama", system-ui, sans-serif; font-weight: 400; font-size: clamp(26px, 2.4vw, 34px); line-height: 1.1; letter-spacing: -.01em; }
+.play__desc { margin: 0; font-size: clamp(17px, 1.4vw, 20px); line-height: 1.5; color: var(--body); max-width: 46ch; }
+/* Linked cards: arrow circle appears and the image eases in on hover */
+.play__go {
+  position: absolute; top: 16px; right: 16px; display: grid; place-items: center; width: 44px; height: 44px; border-radius: 50%;
+  background: var(--cobalt); color: var(--lime); opacity: 0; transform: scale(.8);
+  transition: opacity .25s ease, transform .4s var(--out);
+}
+a.play__card:hover .play__media img { transform: scale(1.03); }
+a.play__card:hover .play__go, a.play__card:focus-visible .play__go { opacity: 1; transform: none; }
+a.play__card:hover .play__title { color: var(--cobalt); }
+a.play__card:focus-visible { outline: 2px solid var(--cobalt); outline-offset: 6px; border-radius: 22px; }
+@media (hover: none) { .play__go { opacity: 1; transform: none; } }
+@media (max-width: 760px) {
+  .play { padding: 20px 16px 64px; }
+  .play__grid { grid-template-columns: 1fr; gap: 40px; }
+  .play__media { border-radius: 16px; margin-bottom: 18px; }
+  .play__go { width: 40px; height: 40px; top: 12px; right: 12px; }
+}

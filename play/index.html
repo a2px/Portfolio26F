@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Play, Ashley Xie</title>
+  <meta name="description" content="Side projects by Ashley Xie: websites, tools and experiments made for fun." />
+  <link rel="preload" href="../fonts/PPFrama-Regular.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="../fonts/PPFramaText-Regular.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="icon" type="image/svg+xml" href="../images/star.svg" />
+  <link rel="stylesheet" href="../css/style.css" />
+  <!-- The loading screen shows once per visit; later page changes skip it so the tab pill can slide -->
+  <script>try{if(sessionStorage.getItem('p26-loaded'))document.documentElement.classList.add('no-loader')}catch(e){}</script>
+</head>
+<body>
+  <div class="loader" id="loader" role="status" aria-label="Loading">
+    <img class="loader__star" src="../images/star.svg" alt="" aria-hidden="true" />
+    <span class="loader__name">Ashley Xie</span>
+  </div>
+  <header class="nav">
+    <a class="nav__name" href="../"><img class="nav__star" src="../images/star.svg" alt="" aria-hidden="true" />Ashley Xie</a>
+    <nav class="nav__tabs" aria-label="Main">
+      <a class="nav__tab" href="../"><span class="nav__label" style="view-transition-name:nav-work">Work</span></a>
+      <a class="nav__tab" href="../about/"><span class="nav__label" style="view-transition-name:nav-about">About</span></a>
+      <a class="nav__tab is-active" href="./" aria-current="page"><span class="nav__pill" aria-hidden="true"></span><span class="nav__label" style="view-transition-name:nav-play">Play</span></a>
+    </nav>
+    <a class="nav__cta" href="https://www.linkedin.com/in/ashley-xie/" target="_blank" rel="noopener noreferrer">
+      <span>Get in touch</span>
+      <span class="nav__cta-icon" aria-hidden="true">
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M4 14L14 4M6 4h8v8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </span>
+    </a>
+    <button class="nav__burger" aria-expanded="false" aria-controls="menu" aria-label="Menu">
+      <span></span><span></span>
+    </button>
+    <div class="menu" id="menu" hidden>
+      <nav class="menu__links" aria-label="Main">
+        <a class="menu__link" href="../">Work</a>
+        <a class="menu__link" href="../about/">About</a>
+        <a class="menu__link is-active" href="./" aria-current="page">Play</a>
+      </nav>
+      <a class="menu__cta" href="https://www.linkedin.com/in/ashley-xie/" target="_blank" rel="noopener noreferrer">
+        <span>Get in touch</span>
+        <span class="nav__cta-icon" aria-hidden="true">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M4 14L14 4M6 4h8v8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </span>
+      </a>
+    </div>
+  </header>
+
+  <main class="play">
+    <h1 class="play__heading">Play</h1>
+    <ul class="play__grid">
+        <li>
+          <a class="play__card" href="https://finalwebsitemiao.netlify.app/" target="_blank" rel="noopener noreferrer">
+            <div class="play__media"><img src="../images/play/miao.webp" width="1200" height="675" fetchpriority="high" alt="" /><span class="play__go" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M4 14L14 4M6 4h8v8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
+            <p class="play__meta">Client website</p>
+            <h2 class="play__title">Custom website for Miao Carrollton</h2>
+            <p class="play__desc">Designed the site from 0 to 1 for a local business, attracting nearby college students with vibrant graphics. Passes WCAG 2.2 and includes analytics.</p>
+          </a>
+        </li>
+        <li>
+          <a class="play__card" href="https://a2px.github.io/links/" target="_blank" rel="noopener noreferrer">
+            <div class="play__media"><img src="../images/play/links.webp" width="1200" height="675" fetchpriority="high" alt="" /><span class="play__go" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M4 14L14 4M6 4h8v8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
+            <p class="play__meta">Personal tool</p>
+            <h2 class="play__title">My personal link board</h2>
+            <p class="play__desc">Consolidates design resources from across the web into clear categories with easy search, managed with a Telegram bot.</p>
+          </a>
+        </li>
+        <li>
+          <a class="play__card" href="https://a2px.github.io/paintings/" target="_blank" rel="noopener noreferrer">
+            <div class="play__media"><img src="../images/play/paintings.webp" width="1200" height="675" decoding="async" alt="" /><span class="play__go" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M4 14L14 4M6 4h8v8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
+            <p class="play__meta">Personal site</p>
+            <h2 class="play__title">Painting portfolio</h2>
+            <p class="play__desc">Presents my pieces with quirky UI and simple UX, inspired by the MoMA.</p>
+          </a>
+        </li>
+        <li>
+          <div class="play__card play__card--static">
+            <div class="play__media"><svg class="play__soon" viewBox="0 0 1200 675" role="img" aria-label="Two friends on a map with a meeting spot halfway between them">
+              <rect width="1200" height="675" fill="#BDE173"/>
+              <path d="M330 420 Q600 180 870 300" fill="none" stroke="#141413" stroke-width="4" stroke-dasharray="4 18" stroke-linecap="round"/>
+              <circle cx="330" cy="420" r="34" fill="#FAFAF7" stroke="#141413" stroke-width="4"/>
+              <circle cx="870" cy="300" r="34" fill="#FAFAF7" stroke="#141413" stroke-width="4"/>
+              <g transform="translate(600 296)"><path d="M0-52 15-16 52-14 22 9 33 46 0 25-33 46-22 9-52-14-15-16Z" fill="#2D5BE0" stroke="#141413" stroke-width="4" stroke-linejoin="round"/></g>
+            </svg></div>
+            <p class="play__meta">Coming soon</p>
+            <h2 class="play__title">Playdate project</h2>
+            <p class="play__desc">Identifies cool hangout spots that are equidistant between both users for coordinating plans.</p>
+          </div>
+        </li>
+        <li>
+          <div class="play__card play__card--static">
+            <div class="play__media"><img src="../images/play/desktop.webp" width="1200" height="675" decoding="async" alt="" /></div>
+            <p class="play__meta">Personal desktop</p>
+            <h2 class="play__title">Personal Computing Interface</h2>
+            <p class="play__desc">Sparking whimsy in my daily desktop.</p>
+          </div>
+        </li>
+    </ul>
+  </main>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>

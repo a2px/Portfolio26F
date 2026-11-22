@@ -54,3 +54,24 @@
   });
   menu.querySelectorAll('a').forEach((a) => a.addEventListener('click', () => setOpen(false)));
 })();
+
+// Case study videos: load and play only once they scroll into view (saves data on arrival);
+// with reduced motion they stay on their still poster.
+(function () {
+  const videos = document.querySelectorAll('video[data-src-mp4]');
+  if (!videos.length || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  function start(v) {
+    if (v.dataset.loaded) { v.play().catch(() => {}); return; }
+    v.dataset.loaded = '1';
+    [['webm', 'video/webm'], ['mp4', 'video/mp4']].forEach(([k, type]) => {
+      const src = v.dataset['src' + k[0].toUpperCase() + k.slice(1)];
+      if (!src) return;
+      const s = document.createElement('source'); s.src = src; s.type = type; v.appendChild(s);
+    });
+    v.load(); v.play().catch(() => {});
+  }
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((e) => { if (e.isIntersecting) start(e.target); else e.target.pause(); });
+  }, { rootMargin: '200px 0px' });
+  videos.forEach((v) => io.observe(v));
+})();
