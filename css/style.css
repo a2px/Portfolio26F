@@ -207,6 +207,8 @@ a { color: inherit; text-decoration: none; }
     linear-gradient(to bottom, rgba(255,255,255,.35) 0%, transparent 18%);
 }
 .strip--intro .strip__content { max-width: none; }
+/* Bold words in the intro: no bold file in the free font cut, so the browser thickens the Regular */
+.strip--intro strong { font-weight: 700; font-synthesis: weight; color: var(--ink); }
 
 /* Open project cards, desktop (Ashley's 2026-11-22 layout): a Mist band on top holds the
    tags and a wide framed screenshot that runs into the band's lower edge; a white band
