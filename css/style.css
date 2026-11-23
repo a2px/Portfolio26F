@@ -772,3 +772,27 @@ a.play__card:focus-visible { outline: 2px solid var(--cobalt); outline-offset: 6
 .logos__grid.is-split .logo:nth-child(4) { grid-column-start: 1; }
 @media (max-width: 760px) { .logos__grid { --tile: 56px; } }
 @media (min-width: 761px) and (max-width: 1200px) { .strip--portrait .logos__grid { --tile: 48px; } }
+
+/* About photos: three snapshots fanned out and overlapping on the right, each slightly crooked */
+.about__fan { position: relative; min-height: 440px; align-self: center; }
+.about__snap {
+  position: absolute; top: 50%; margin: 0; width: 46%; aspect-ratio: 3 / 4;
+  border-radius: 18px; overflow: hidden; background: #fff;
+  border: 5px solid #fff; box-shadow: 0 2px 4px rgba(20,20,19,.06), 0 18px 36px -16px rgba(20,20,19,.32);
+  transition: transform .45s var(--out);
+}
+.about__snap img { width: 100%; height: 100%; object-fit: cover; display: block; border-radius: 13px; }
+.about__snap--1 { left: 0;   transform: translateY(-50%) rotate(-7deg); z-index: 1; }
+.about__snap--2 { left: 27%; transform: translateY(-54%) rotate(4deg);  z-index: 2; }
+.about__snap--3 { left: 54%; transform: translateY(-47%) rotate(-3deg); z-index: 3; }
+@media (hover: hover) {
+  .about__snap:hover { z-index: 4; }
+  .about__snap--1:hover { transform: translateY(-52%) rotate(-4deg) scale(1.03); }
+  .about__snap--2:hover { transform: translateY(-56%) rotate(1deg) scale(1.03); }
+  .about__snap--3:hover { transform: translateY(-49%) rotate(0deg) scale(1.03); }
+}
+@media (max-width: 760px) {
+  .about__fan { order: -1; min-height: 0; aspect-ratio: 5 / 4; margin: 4px 0 8px; }
+  .about__snap { width: 48%; border-width: 4px; border-radius: 14px; }
+  .about__snap img { border-radius: 10px; }
+}
