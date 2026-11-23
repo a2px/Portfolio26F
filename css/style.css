@@ -688,3 +688,10 @@ a.play__card:focus-visible { outline: 2px solid var(--cobalt); outline-offset: 6
   left: var(--a-l, .10em); top: var(--a-t, .36em); width: var(--a-w, .47em); height: var(--a-h, .49em);
   border-radius: 50%; background: var(--apricot);
 }
+
+/* Counter fills in headings: the enclosed holes of e and A filled with apricot, sitting behind
+   the letter. Sizes measured from the PP Frama glyphs (em, so they scale with the heading). */
+.fill-e, .fill-A { position: relative; display: inline-block; isolation: isolate; }
+.fill-e::before, .fill-A::before { content: ""; position: absolute; z-index: -1; pointer-events: none; background: var(--apricot); }
+.fill-e::before { left: .112em; top: .40em; width: .385em; height: .17em; border-radius: 50% 50% 0 0 / 100% 100% 0 0; }
+.fill-A::before { left: .193em; top: .205em; width: .285em; height: .43em; clip-path: polygon(50% 0, 100% 100%, 0 100%); }
