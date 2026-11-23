@@ -708,3 +708,6 @@ a.play__card:focus-visible { outline: 2px solid var(--cobalt); outline-offset: 6
 
 /* About page title, same size as the Play title; its counters fill with Cobalt */
 .about__title { margin: 0 0 clamp(24px, 4vh, 40px); font-family: "PP Frama", system-ui, sans-serif; font-weight: 400; font-size: clamp(44px, 5vw, 72px); line-height: 1; letter-spacing: -.01em; --fill-color: var(--cobalt); }
+
+/* Open project cards are links to their case study as a whole */
+.strip--shot[data-open] { cursor: pointer; }

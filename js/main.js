@@ -100,11 +100,21 @@
     }
   }
 
+  // Clicking a closed card opens it. Clicking an open card goes to its case study (the same place
+  // as its button); Cmd/Ctrl-click or middle-click opens it in a new tab. Cards without a button
+  // (the introduction) stay put. On phones every card is open, so a tap goes straight there.
+  function goTo(strip, e) {
+    const link = strip.querySelector('.strip__content a.cta');
+    if (!link || e.target.closest('a, button')) return;
+    if (e.metaKey || e.ctrlKey || e.button === 1 || link.target === '_blank') window.open(link.href, '_blank', 'noopener');
+    else window.location.href = link.href;
+  }
   strips.forEach((strip) => {
-    strip.addEventListener('click', () => {
-      if (phone.matches || strip.hasAttribute('data-open')) return;
+    strip.addEventListener('click', (e) => {
+      if (phone.matches || strip.hasAttribute('data-open')) { goTo(strip, e); return; }
       lastOpen = strip; open(strip);
     });
+    strip.addEventListener('auxclick', (e) => { if (e.button === 1 && (phone.matches || strip.hasAttribute('data-open'))) goTo(strip, e); });
   });
 
   applyMode();
