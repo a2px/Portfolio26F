@@ -15,7 +15,6 @@
   /* Palette: neutrals + four colours */
   --paper: #FAFAF7;
   --line: #E7E7E1;
-  --mid: #A3A39C; /* medium gray, added 2026-11-23 for the video frame strokes (decorative, not for text) */
   --body: #666660; /* palette Body gray #6E6E68, darkened just enough to reach WCAG AA 4.5:1 on Mist and Line gray */
   --ink: #141413;
   --cobalt: #2D5BE0;
