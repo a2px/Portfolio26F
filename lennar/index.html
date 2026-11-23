@@ -1,0 +1,258 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Lennar Investor Marketplace, Ashley Xie</title>
+  <meta name="description" content="Case study: designing a marketplace for real estate investors for Lennar. 6,500+ registered investors in two months." />
+  <link rel="preload" href="../fonts/PPFrama-Regular.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="../fonts/PPFramaText-Regular.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="icon" type="image/svg+xml" href="../images/star.svg" />
+  <link rel="stylesheet" href="../css/style.css?v=20261123000127" />
+  <!-- The loading screen shows once per visit; later page changes skip it so the tab pill can slide -->
+  <script>try{if(sessionStorage.getItem('p26-loaded'))document.documentElement.classList.add('no-loader')}catch(e){}</script>
+</head>
+<body class="cs-page" style="--cs-accent:#BDE173;--cs-tint:#E2F0C2">
+  <div class="loader" id="loader" role="status" aria-label="Loading">
+    <img class="loader__star" src="../images/star.svg" alt="" aria-hidden="true" />
+    <span class="loader__name">Ashley Xie</span>
+  </div>
+  <header class="nav">
+    <a class="nav__name" href="../"><img class="nav__star" src="../images/star.svg" alt="" aria-hidden="true" />Ashley Xie</a>
+    <nav class="nav__tabs" aria-label="Main">
+      <a class="nav__tab is-active" href="../"><span class="nav__pill" aria-hidden="true"></span><span class="nav__label" style="view-transition-name:nav-work">Work</span></a>
+      <a class="nav__tab" href="../about/"><span class="nav__label" style="view-transition-name:nav-about">About</span></a>
+      <a class="nav__tab" href="../play/"><span class="nav__label" style="view-transition-name:nav-play">Play</span></a>
+    </nav>
+    <a class="nav__cta" href="https://www.linkedin.com/in/ashley-xie/" target="_blank" rel="noopener noreferrer">
+      <span>Say hi</span>
+      <span class="nav__cta-icon" aria-hidden="true">
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M4 14L14 4M6 4h8v8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </span>
+    </a>
+    <button class="nav__burger" aria-expanded="false" aria-controls="menu" aria-label="Menu">
+      <span></span><span></span>
+    </button>
+    <div class="menu" id="menu" hidden>
+      <nav class="menu__links" aria-label="Main">
+        <a class="menu__link is-active" href="../">Work</a>
+        <a class="menu__link" href="../about/">About</a>
+        <a class="menu__link" href="../play/">Play</a>
+      </nav>
+      <a class="menu__cta" href="https://www.linkedin.com/in/ashley-xie/" target="_blank" rel="noopener noreferrer">
+        <span>Say hi</span>
+        <span class="nav__cta-icon" aria-hidden="true">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M4 14L14 4M6 4h8v8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </span>
+      </a>
+    </div>
+  </header>
+
+  <main class="cs">
+    <section class="cs-hero" aria-labelledby="cs-title">
+      <div class="cs-hero__left">
+        <ul class="strip__tags cs-tags"><li class="tag">Product design</li><li class="tag">Proptech</li><li class="tag">Marketplace</li></ul>
+        <h1 class="cs-hero__title" id="cs-title">Lennar Investor Marketplace</h1>
+      </div>
+      <div class="cs-hero__right">
+        <p>In the first two months after launch: 6,500+ registered investors, 228+ offers submitted, $64M+ in total offer value submitted through the platform. Covered by Fast Company and ResiClub. Lennar's CEO greenlit Version 2.</p>
+        <a class="cta" href="https://investor-marketplace.lennar.com/portal/" target="_blank" rel="noopener noreferrer"><span>See it live</span><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M3 10h14M11 4l6 6-6 6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      </div>
+    </section>
+
+    <dl class="cs-meta">
+      <div><dt>Timeline</dt><dd>Feb – Aug 2025 (7 months)</dd></div>
+      <div><dt>Role</dt><dd>Sole designer: research, UX, UI · Framer build · Figma specs for dev</dd></div>
+      <div><dt>Team</dt><dd>Designer (me) · CTO (acting PM) · 5 developers</dd></div>
+      <div><dt>Deliverables</dt><dd>Figma prototype · Framer marketing site</dd></div>
+    </dl>
+  </main>
+
+  <figure class="cs-bleed">
+    <img src="../images/lennar/browse-1200.webp" srcset="../images/lennar/browse-1200.webp 1200w, ../images/lennar/browse-2400.webp 2400w" sizes="100vw" width="2400" height="1483" fetchpriority="high" alt="Lennar Investor Marketplace browse view with map and property listings" />
+  </figure>
+
+  <div class="cs cs-body">
+    <nav class="cs-nav" aria-label="Sections">
+      <ul>
+          <li><a class="cs-nav__link" href="#business-context">Business context</a></li>
+          <li><a class="cs-nav__link" href="#user-research">User research</a></li>
+          <li><a class="cs-nav__link" href="#competitive-research">Competitive research</a></li>
+          <li><a class="cs-nav__link" href="#design-challenge">Design challenge</a></li>
+          <li><a class="cs-nav__link" href="#solution">Solution</a></li>
+          <li><a class="cs-nav__link" href="#testing">Testing</a></li>
+          <li><a class="cs-nav__link" href="#outcomes">Outcomes</a></li>
+          <li><a class="cs-nav__link" href="#reflection">Reflection</a></li>
+      </ul>
+    </nav>
+    <div class="cs-sections">
+
+        <section class="cs-section" id="business-context">
+          <h2>Business context</h2>
+          <div class="cs-split">
+            <div>
+              <h3>Addressing the housing surplus with a digital product</h3>
+              <p>After the pandemic, the demand for housing faded, and new home sales in the U.S. hit their lowest point since 2009. Thousands of homes Lennar had built became excess inventory. Their existing digital solution, lennar.com, was designed for owner-occupants.</p>
+              <p>Lennar identified a new possible customer base: mom-and-pop real estate investors. But reaching these investors, and converting them efficiently, required a completely new product.</p>
+            </div>
+          <figure class="cs-fig ">
+            <img src="../images/lennar/housing-chart.webp" width="1024" height="912" loading="lazy" decoding="async" alt="Chart showing number of unsold completed homes for sale reaching highest level since 2009" />
+          </figure>
+          </div>
+        </section>
+
+        <section class="cs-section" id="user-research">
+          <h2>User research</h2>
+          <h3>Identifying small investors vs. experienced portfolio operators</h3>
+          <p>Given NDA constraints and investor availability, I employed a stakeholder-driven research approach, conducting in-depth interviews with analysts who supported investors daily. This allowed me to understand user needs, pain points, and behaviors through the lens of those closest to the users, at the cost of a filtered perspective. I implemented Hotjar post-launch to validate whether analyst-reported pain points matched actual behavior.</p>
+          <p>Through analyst interviews, I identified critical pain points that were slowing down investor purchases:</p>
+          <ul class="cs-list">
+            <li><strong>Missing context.</strong> Key rental investment data (property managers, tax rates, rental comps) required extra external research, further slowing down the offer process.</li>
+            <li><strong>Information overload.</strong> Investors had to juggle multiple tabs and Excel spreadsheets, with irrelevant owner-occupant details or non-viable properties cluttering their research.</li>
+            <li><strong>Inefficient process.</strong> Current marketplace workflows were designed for users buying a single house, with no ability to examine or bid on multiple houses at once.</li>
+          </ul>
+          <p>As I synthesized my research, two distinct investor profiles emerged:</p>
+          <div class="cs-cards">
+            <div class="cs-card"><h4>The individual investor</h4><p>Adds 1–3 properties to an existing small portfolio and has less experience in the investor process. They need enough information to make a decision without being there in person, and they need to trust that the property is a sound investment.</p></div>
+            <div class="cs-card"><h4>The portfolio operator</h4><p>Buys 5–10+ properties at a time and treats acquisitions as a structured business process. They want to evaluate many properties quickly, shortlist, and submit multiple offers in one session.</p></div>
+          </div>
+          <p>Sometimes their needs clashed: one user needed as much information as possible to feel confident; the other prioritized efficiency.</p>
+        </section>
+
+        <section class="cs-section" id="competitive-research">
+          <h2>Competitive research</h2>
+          <h3>Analyzing common industry patterns</h3>
+          <p>To inform my design decisions, I researched 20+ real estate platforms. My goal was twofold: identify unique elements that made companies stand out, and understand which UX patterns had become industry standards that users expected.</p>
+          <p>For example, one thing I focused on was visual hierarchy in property cards, since these were the primary browsing element and needed to pack detailed information into a small space. Key takeaways that guided my designs:</p>
+          <ul class="cs-list">
+            <li><strong>Image dominance.</strong> The majority of card space was dedicated to property photos.</li>
+            <li><strong>Price prominence.</strong> The largest text was reserved for price or community name, yet price was usually the greater decision driver.</li>
+            <li><strong>Promotional overlays.</strong> Tags and badges were overlaid on images to save space.</li>
+            <li><strong>CTA consideration.</strong> Cards with call-to-action buttons prompted action but felt cluttered; clickable cards without explicit CTAs were cleaner and equally intuitive.</li>
+          </ul>
+          <figure class="cs-fig ">
+            <img src="../images/lennar/competitive.webp" width="1800" height="1193" loading="lazy" decoding="async" alt="Competitive research across 20+ builder and real estate marketplace websites" />
+            <figcaption>I evaluated 20+ builder and real estate marketplace websites to identify successful yet distinct visual hierarchy patterns in property card design.</figcaption>
+          </figure>
+          <h3>Finding what is missing in real estate marketplaces</h3>
+          <p>I analyzed 20+ real estate platforms, but three shaped my thinking most directly.</p>
+          <p>Zillow is the most successful market in the real estate industry and used by owner-occupants and investors alike. However, its property pages were designed for owner-occupants: school ratings, "Zestimate" valuations, neighborhood "feel" content. While this was useful for a family buying a home, it was completely wrong for an investor who wants cap rate and rental income.</p>
+          <p>Roofstock was the most important reference. In their investor-specific marketplace, they already surfaced cap rate front and center on every listing card. This confirmed my instinct: investors prioritize different metrics compared to owner-occupants.</p>
+          <blockquote class="cs-quote"><strong>Key competitive insight.</strong> No existing platform combined inventory browsing with the full financial research toolkit investors actually needed. Every platform forced investors to leave and do their own research elsewhere.</blockquote>
+        </section>
+
+        <section class="cs-section" id="design-challenge">
+          <h2>Design challenge</h2>
+          <h3>Navigating transparency vs. clarity</h3>
+          <p>The hardest problem in this project wasn't a feature, but about establishing credibility. Investors needed data to feel confident. But presenting too much data created the exact overwhelming experience we wanted to replace.</p>
+          <p>This tension was present in every design decision, especially in the investment data panel: the section of each property page showing rental comps, tax rates, property manager contacts, demographics, and occupancy trends.</p>
+          <div class="cs-cards">
+            <blockquote class="cs-quote"><strong>The case for showing everything upfront.</strong> Investors are making financial decisions on properties they've often never visited, in markets they may not know well. If they can't see the full picture immediately, they won't trust the platform. Partial data creates doubt which in turn slows down offers. The analysts I interviewed were clear that investor confidence, not speed, was the primary barrier to conversion. Hiding data behind clicks felt like withholding it.</blockquote>
+            <blockquote class="cs-quote"><strong>The case for progressive disclosure.</strong> Showing all financial data on loaded pages that looked like spreadsheets was dense, intimidating, and visually indistinguishable from the existing process we were replacing. In early explorations, the fully-expanded layout was an eyesore that users wouldn't even read. First impressions matter, and a page that looks hard to use will be abandoned in seconds.</blockquote>
+          </div>
+          <p>What this tension taught me: on high-stakes transactional products, "show everything" and "reduce cognitive load" are not binary opposites, but constraints to satisfy simultaneously, through visual hierarchy. The question is not whether to show the data, but in what order and at what stage of a user's decision.</p>
+        </section>
+
+        <section class="cs-section" id="solution">
+          <h2>Solution</h2>
+          <h3>Prioritizing easy offer checkout and establishing trust with detailed metrics</h3>
+          <div class="cs-step">
+            <div>
+              <p class="cs-step__num">01</p>
+              <h4>Integrating investment data in one spot</h4>
+              <p>Users were opening up dozens of tabs to answer the question, "What's the rental potential?". Now this process was replaced with every listing including features like:</p>
+              <ul class="cs-list cs-list--plain">
+                <li>Estimated rental income, cap rate, and other financial metrics</li>
+                <li>Property tax rates and annual amounts</li>
+                <li>Rental comps from nearby properties</li>
+                <li>Local property manager directory with fee structures</li>
+                <li>Neighborhood demographics and school scores</li>
+              </ul>
+              <p>Instead of just showing a property listing, this marketplace shows a complete investment research environment. An investor evaluating a property could now make a decision without leaving the page.</p>
+            </div>
+          <figure class="cs-fig ">
+            <img src="../images/lennar/step-01.webp" width="1338" height="1454" loading="lazy" decoding="async" alt="Property page with investment data in one panel" />
+          </figure>
+          </div>
+          <div class="cs-step">
+            <div>
+              <p class="cs-step__num">02</p>
+              <h4>Displaying more information without the clutter</h4>
+              <p>I split information-heavy features into separate sections and pages to minimize cognitive overload (as opposed to the infinite scroll method seen on sites like Zillow). Investor research follows a funnel: broad search → filter by criteria → save or place offers. I sorted relevant information into these stages accordingly:</p>
+              <ul class="cs-list">
+                <li><strong>Browse view.</strong> High-level property scanning with key metrics</li>
+                <li><strong>Detail view.</strong> Comprehensive investment analysis for individual properties</li>
+                <li><strong>Offer management.</strong> Features for tracking saved or submitted offers</li>
+              </ul>
+            </div>
+          <figure class="cs-fig ">
+            <img src="../images/lennar/step-02.webp" width="1400" height="1385" loading="lazy" decoding="async" alt="Browse, detail and offer views" />
+          </figure>
+          </div>
+          <div class="cs-step">
+            <div>
+              <p class="cs-step__num">03</p>
+              <h4>Designing a bulk offer flow</h4>
+              <p>Experienced investors often bid on multiple properties simultaneously and accept the best response from Lennar's agents. I designed a cart-like shortlisting flow specifically for this use case: bookmark properties during research, add to a shortlist cart, and submit multiple offers in a single session with a bulk review screen.</p>
+              <p>This was designed for Group 2: the portfolio operators. What the data showed after launch: Group 1 investors (the smaller, 1–3 property buyers) were also using bulk submissions. The behavior wasn't driven by investor sophistication; it was driven by the platform making comparison and bulk submission easy enough for even casual buyers.</p>
+            </div>
+          <figure class="cs-fig ">
+            <img src="../images/lennar/step-03.webp" width="1262" height="1105" loading="lazy" decoding="async" alt="Bulk offer review screen" />
+          </figure>
+          </div>
+        </section>
+
+        <section class="cs-section" id="testing">
+          <h2>Testing</h2>
+          <h3>Surprisingly, cap rate was too technical for most users</h3>
+          <p>I assumed that not only was the cap rate the most important metric for investors, it was the strongest feature that our marketplace offered over others. I gave the cap rate filter a high visual prominence in the navigation bar. This design included a numeric stepper with high visual weight, positioned as the primary way to filter investment quality. Experienced investors referenced it on forum discussions and competitive platforms like Roofstock show it front and center.</p>
+          <p>At first, I thought the Hotjar data supported this claim. The cap rate filter showed high click activity, but 7 user interviews from Lennar stated that users did not know what it was. It turns out that the click activity was a reflection of a small group of users clicking the numeric stepper repeatedly, not broad adoption. Most investors weren't using it at all.</p>
+          <p>This insight also shifted a change in how we organized our two user groups. While portfolio operators (Group 2) understood cap rate and referenced it repeatedly, individual investors (Group 1) did not think in those terms. More importantly, the latter turned out to be the majority of our user base. I had designed the primary filter for the specialized minority and made it prominent at the expense of the majority's attention.</p>
+          <blockquote class="cs-quote"><strong>Post-launch changes.</strong> Cap rate was deprioritized visually and moved lower in the filter panel, given the same visual weight as bed count and bathroom count: useful for those who want it, not foregrounded for those who don't. The lesson: designing for your power user is right until it isn't. When your user base skews more novice than you anticipated, your information hierarchy has to follow the actual distribution, not the assumed one.</blockquote>
+          <figure class="cs-fig ">
+            <img src="../images/lennar/hotjar.webp" width="1800" height="686" loading="lazy" decoding="async" alt="Hotjar heatmap showing concentrated click activity on the Min Cap Rate filter" />
+            <figcaption>Hotjar heatmap data showing high click activity concentrated on the Min Cap Rate filter, later revealed to be a small group of power users clicking the stepper repeatedly, not broad user adoption.</figcaption>
+          </figure>
+        </section>
+
+        <section class="cs-section" id="outcomes">
+          <h2>Outcomes</h2>
+          <h3>In the first two months</h3>
+          <div class="cs-stats">
+            <div><p class="cs-stats__num">6,500+</p><p>registered investors in the first two months</p></div>
+            <div><p class="cs-stats__num">228+</p><p>offers submitted</p></div>
+            <div><p class="cs-stats__num">$64M+</p><p>in total offer value submitted through the platform</p></div>
+          </div>
+          <p>By combining familiar real estate patterns with investor-specific features and integrated research tools, the platform enabled investors to move from discovery to offer in a fraction of the time. Our marketplace was praised by news outlets and Lennar's CEO greenlit more resources to expand the project even further.</p>
+        </section>
+
+        <section class="cs-section" id="reflection">
+          <h2>Reflection</h2>
+          <h3>What I'd do differently</h3>
+          <ul class="cs-list">
+            <li><strong>User testing with actual investors, not just analysts.</strong> Analyst feedback was valuable: they knew the industry and the investor pain points deeply. But analysts are not our main users. I believe some onboarding friction still exists for that user, and we didn't have the budget or timeline to recruit real investors for testing. Just one round of investor testing before launch would have surfaced issues that the analyst walkthroughs couldn't.</li>
+            <li><strong>Earlier pressure on the legal review.</strong> The rental comps liability concern from Lennar's legal team surfaced in June, two months into design. It required restructuring how financial estimates were presented and adding disclaimers that changed the visual design of the data panel. This should have surfaced in March, during research. The lesson: when designing financial products, loop in legal at the research phase, not the design review phase.</li>
+            <li><strong>A more rigorous information hierarchy framework for the data panel.</strong> The "what's primary vs. expandable" question was never fully resolved; it was negotiated round by round. I'd build that framework earlier and get alignment on it from analysts, the CTO, and Lennar stakeholders before designing the component, not after.</li>
+          </ul>
+          <blockquote class="cs-quote"><strong>Version 2 is in development.</strong> Current focus: deeper visual integration with lennar.com and added features such as available property managers and loan options for users.</blockquote>
+        </section>
+
+    </div>
+  </div>
+
+  <nav class="cs cs-pn" aria-label="More case studies">
+    <a class="cs-pn__card" href="https://a2px.github.io/portfolio/mark-spain/">
+      <img src="../images/cards/mark-spain-poster.webp" width="1120" height="630" loading="lazy" alt="" />
+      <span class="cs-pn__label"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M17 10H3M9 4l-6 6 6 6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg> Previous</span>
+      <span class="cs-pn__title">Mark Spain Real Estate</span>
+    </a>
+    <a class="cs-pn__card cs-pn__card--next" href="https://a2px.github.io/portfolio/locate-alpha/">
+      <img src="../images/cards/locate-alpha-poster.webp" width="1280" height="720" loading="lazy" alt="" />
+      <span class="cs-pn__label">Next <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M3 10h14M11 4l6 6-6 6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      <span class="cs-pn__title">Locate Alpha Website and Branding</span>
+    </a>
+  </nav>
+
+  <script src="../js/main.js?v=20261123000127"></script>
+</body>
+</html>

@@ -589,3 +589,88 @@ a.play__card:focus-visible { outline: 2px solid var(--cobalt); outline-offset: 6
   .play__media { border-radius: 16px; margin-bottom: 16px; }
   .play__go { width: 40px; height: 40px; top: 12px; right: 12px; }
 }
+
+/* ---------- Case study pages (Lennar first; Ashley's reference layout 2026-11-22) ----------
+   Hero: big title left, summary + button right. Then a full-width image, then a sticky list of
+   section pills on the left (the current one fills with the card's colour) beside the story. */
+.cs { padding-left: max(clamp(20px, 4.6vw, 64px), (100% - 1400px) / 2); padding-right: max(clamp(20px, 4.6vw, 64px), (100% - 1400px) / 2); }
+.cs-hero { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 40px 64px; align-items: end; padding-top: clamp(24px, 6vh, 72px); }
+.cs-tags { justify-content: flex-start; max-width: none; margin-bottom: 24px; }
+.cs-hero__title { margin: 0; font-family: "PP Frama", system-ui, sans-serif; font-weight: 400; font-size: clamp(44px, 5.6vw, 84px); line-height: .98; letter-spacing: -.015em; text-wrap: balance; }
+.cs-hero__right p { margin: 0 0 24px; font-size: clamp(17px, 1.4vw, 20px); line-height: 1.5; color: var(--body); max-width: 46ch; }
+.cs .cta:hover, .cs-pn .cta:hover { background: var(--cobalt); color: var(--paper); box-shadow: none; }
+.cs .cta:hover svg { transform: translateX(4px); }
+.cs-meta { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; margin: 48px 0 40px; }
+.cs-meta div { padding: 18px 20px; border-radius: 18px; background: #fff; border: 1px solid var(--line); }
+.cs-meta dt { font-size: 14px; font-style: italic; color: var(--body); margin-bottom: 6px; }
+.cs-meta dd { margin: 0; font-size: 16px; line-height: 1.45; }
+.cs-bleed { margin: 0; background: var(--cs-tint, var(--mist)); }
+.cs-bleed img { display: block; width: 100%; height: auto; max-height: 78vh; object-fit: cover; object-position: top center; }
+
+.cs-body { display: grid; grid-template-columns: 220px minmax(0, 1fr); gap: clamp(32px, 6vw, 96px); padding-top: clamp(48px, 8vh, 96px); }
+.cs-nav ul { list-style: none; margin: 0; padding: 0; position: sticky; top: 24px; display: flex; flex-direction: column; align-items: flex-start; gap: 10px; }
+.cs-nav__link {
+  display: inline-block; padding: 8px 14px; border-radius: 999px; font-size: 15px; color: var(--ink);
+  background: #fff; border: 1px solid var(--line); transition: background .25s ease, border-color .25s ease;
+}
+.cs-nav__link:hover { border-color: var(--ink); }
+.cs-nav__link.is-current { background: var(--cs-accent, var(--lime)); border-color: transparent; }
+.cs-nav__link:focus-visible { outline: 2px solid var(--cobalt); outline-offset: 2px; }
+
+.cs-sections { max-width: 820px; }
+.cs-section { padding-bottom: clamp(48px, 7vh, 88px); scroll-margin-top: 24px; }
+.cs-section h2 { margin: 0 0 8px; font-family: "PP Frama", system-ui, sans-serif; font-weight: 400; font-size: clamp(34px, 3.4vw, 48px); line-height: 1.05; letter-spacing: -.01em; }
+.cs-section h3 { margin: 0 0 18px; font-size: clamp(18px, 1.5vw, 21px); line-height: 1.35; color: var(--body); font-weight: 400; }
+.cs-section h3:not(:first-of-type) { margin-top: 40px; color: var(--ink); }
+.cs-section h4 { margin: 0 0 10px; font-family: "PP Frama", system-ui, sans-serif; font-weight: 400; font-size: 24px; line-height: 1.15; }
+.cs-section p, .cs-list { font-size: 17px; line-height: 1.6; margin: 0 0 16px; }
+.cs-section strong { font-weight: 700; font-synthesis: weight; }
+.cs-list { padding-left: 0; list-style: none; }
+.cs-list li { margin-bottom: 12px; }
+.cs-list--plain li { padding-left: 18px; position: relative; margin-bottom: 6px; }
+.cs-list--plain li::before { content: ""; position: absolute; left: 2px; top: .72em; width: 6px; height: 6px; border-radius: 50%; background: var(--ink); }
+.cs-split { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: 32px; align-items: center; }
+.cs-split h3 { color: var(--body); }
+.cs-fig { margin: 24px 0 28px; }
+.cs-split .cs-fig { margin: 0; }
+.cs-fig img { display: block; width: 100%; height: auto; border-radius: 18px; border: 1px solid var(--line); background: #fff; }
+.cs-fig figcaption { margin-top: 10px; font-size: 14px; line-height: 1.5; color: var(--body); }
+.cs-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 8px 0 20px; }
+.cs-card { padding: 22px; border-radius: 18px; background: #fff; border: 1px solid var(--line); }
+.cs-card p { margin: 0; font-size: 16px; color: var(--body); }
+.cs-quote { margin: 8px 0 24px; padding: 22px 24px; border-radius: 18px; background: var(--cs-tint, var(--mist)); font-size: 17px; line-height: 1.6; }
+.cs-cards .cs-quote { margin: 0; }
+.cs-step { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 32px; align-items: start; padding: 28px 0; border-top: 1px solid var(--line); }
+.cs-step .cs-fig { margin: 0; }
+.cs-step__num { margin: 0 0 6px !important; font-size: 14px !important; font-style: italic; color: var(--body); }
+.cs-stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin: 8px 0 24px; }
+.cs-stats div { padding: 22px; border-radius: 18px; background: var(--cs-tint, var(--mist)); }
+.cs-stats p { margin: 0; font-size: 15px; line-height: 1.45; color: var(--body); }
+.cs-stats .cs-stats__num { font-family: "PP Frama", system-ui, sans-serif; font-size: clamp(34px, 3.4vw, 48px); line-height: 1; color: var(--ink); margin-bottom: 10px; }
+
+/* Previous / next case study */
+.cs-pn { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; padding-top: 24px; padding-bottom: 96px; border-top: 1px solid var(--line); margin-top: 8px; }
+.cs-pn__card { display: flex; flex-direction: column; gap: 6px; color: inherit; }
+.cs-pn__card img { width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; object-position: top left; border-radius: 18px; border: 1px solid var(--line); margin-bottom: 12px; transition: transform .5s var(--out); }
+.cs-pn__card--next { align-items: flex-end; text-align: right; }
+.cs-pn__label { display: inline-flex; align-items: center; gap: 8px; font-size: 14px; font-style: italic; color: var(--body); }
+.cs-pn__title { font-family: "PP Frama", system-ui, sans-serif; font-size: clamp(22px, 2vw, 30px); line-height: 1.1; }
+.cs-pn__card:hover .cs-pn__title { color: var(--cobalt); }
+.cs-pn__card:focus-visible { outline: 2px solid var(--cobalt); outline-offset: 6px; border-radius: 18px; }
+
+@media (max-width: 960px) {
+  .cs-hero { grid-template-columns: 1fr; align-items: start; }
+  .cs-meta { grid-template-columns: 1fr 1fr; }
+  .cs-body { grid-template-columns: minmax(0, 1fr); }
+  .cs-body > *, .cs-hero > * { min-width: 0; }
+  .cs-nav { position: sticky; top: 0; z-index: 5; margin: 0 calc(-1 * clamp(20px, 4.6vw, 64px)); padding: 10px clamp(20px, 4.6vw, 64px); background: color-mix(in srgb, var(--paper) 92%, transparent); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); }
+  .cs-nav ul { position: static; flex-direction: row; overflow-x: auto; scrollbar-width: none; }
+  .cs-nav__link { white-space: nowrap; }
+  .cs-section { scroll-margin-top: 72px; }
+}
+@media (max-width: 760px) {
+  .cs-meta { grid-template-columns: 1fr; margin: 32px 0 28px; }
+  .cs-split, .cs-cards, .cs-step, .cs-stats, .cs-pn { grid-template-columns: 1fr; }
+  .cs-pn__card--next { align-items: flex-start; text-align: left; }
+  .cs-section p, .cs-list, .cs-quote { font-size: 16px; }
+}

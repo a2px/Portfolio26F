@@ -125,3 +125,26 @@
   }, { rootMargin: '200px 0px' });
   videos.forEach((v) => io.observe(v));
 })();
+
+// Case study pages: the section pill for the part of the story on screen fills with colour.
+(function () {
+  const links = Array.from(document.querySelectorAll('.cs-nav__link'));
+  if (!links.length) return;
+  const byId = new Map(links.map((a) => [a.getAttribute('href').slice(1), a]));
+  const sections = Array.from(byId.keys()).map((id) => document.getElementById(id)).filter(Boolean);
+  let last = null;
+  function update() {
+    const line = window.innerHeight * 0.3;
+    let current = sections[0];
+    sections.forEach((s) => { if (s.getBoundingClientRect().top <= line) current = s; });
+    if (current === last) return;
+    last = current;
+    links.forEach((a) => a.classList.toggle('is-current', byId.get(current.id) === a));
+    const active = byId.get(current.id);
+    const bar = active.closest('ul');
+    if (bar && bar.scrollWidth > bar.clientWidth) bar.scrollTo({ left: active.offsetLeft - 16, behavior: 'smooth' });
+  }
+  let ticking = false;
+  window.addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(() => { update(); ticking = false; }); } }, { passive: true });
+  update();
+})();
