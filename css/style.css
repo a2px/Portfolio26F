@@ -691,7 +691,12 @@ a.play__card:focus-visible { outline: 2px solid var(--cobalt); outline-offset: 6
 
 /* Counter fills in headings: the enclosed holes of e and A filled with apricot, sitting behind
    the letter. Sizes measured from the PP Frama glyphs (em, so they scale with the heading). */
-.fill-e, .fill-A { position: relative; display: inline-block; isolation: isolate; }
-.fill-e::before, .fill-A::before { content: ""; position: absolute; z-index: -1; pointer-events: none; background: var(--apricot); }
+.fill-e, .fill-A, .fill-b, .fill-o { position: relative; display: inline-block; isolation: isolate; }
+.fill-e::before, .fill-A::before, .fill-b::before, .fill-o::before { content: ""; position: absolute; z-index: -1; pointer-events: none; background: var(--fill-color, var(--apricot)); }
+.fill-b::before { left: .145em; top: .40em; width: .42em; height: .42em; border-radius: 50%; }
+.fill-o::before { left: .107em; top: .40em; width: .413em; height: .42em; border-radius: 50%; }
 .fill-e::before { left: .112em; top: .40em; width: .385em; height: .17em; border-radius: 50% 50% 0 0 / 100% 100% 0 0; }
 .fill-A::before { left: .193em; top: .205em; width: .285em; height: .43em; clip-path: polygon(50% 0, 100% 100%, 0 100%); }
+
+/* About page title, same size as the Play title; its counters fill with Cobalt */
+.about__title { margin: 0 0 clamp(24px, 4vh, 40px); font-family: "PP Frama", system-ui, sans-serif; font-weight: 400; font-size: clamp(44px, 5vw, 72px); line-height: 1; letter-spacing: -.01em; --fill-color: var(--cobalt); }
