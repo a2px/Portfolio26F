@@ -680,3 +680,11 @@ a.play__card:focus-visible { outline: 2px solid var(--cobalt); outline-offset: 6
   .cs-pn__card--next { align-items: flex-start; text-align: left; }
   .cs-section p, .cs-list, .cs-quote { font-size: 16px; }
 }
+
+/* Play heading: the bowl of the "a" is filled with apricot (decorative, sits behind the letter) */
+.play__a { position: relative; display: inline-block; isolation: isolate; }
+.play__a::before {
+  content: ""; position: absolute; z-index: -1; pointer-events: none;
+  left: var(--a-l, .10em); top: var(--a-t, .36em); width: var(--a-w, .47em); height: var(--a-h, .49em);
+  border-radius: 50%; background: var(--apricot);
+}
