@@ -634,11 +634,11 @@ a.play__card:focus-visible { outline: 2px solid var(--cobalt); outline-offset: 6
 .cs-body { display: grid; grid-template-columns: 220px minmax(0, 1fr); gap: clamp(32px, 6vw, 96px); padding-top: clamp(48px, 8vh, 96px); }
 .cs-nav ul { list-style: none; margin: 0; padding: 0; position: sticky; top: 24px; display: flex; flex-direction: column; align-items: flex-start; gap: 10px; }
 .cs-nav__link {
-  display: inline-block; padding: 8px 14px; border-radius: 999px; font-size: 15px; color: var(--ink);
+  display: inline-block; padding: 8px 14px; border-radius: 999px; font-size: 15px; color: var(--ink); white-space: nowrap;
   background: #fff; border: 1px solid var(--line); transition: background .25s ease, border-color .25s ease;
 }
 .cs-nav__link:hover { border-color: var(--ink); }
-.cs-nav__link.is-current { background: var(--cs-accent, var(--lime)); border-color: transparent; }
+.cs-nav__link.is-current { background: var(--cs-accent, var(--lime)); color: var(--cs-on, var(--ink)); border-color: transparent; }
 .cs-nav__link:focus-visible { outline: 2px solid var(--cobalt); outline-offset: 2px; }
 
 .cs-sections { max-width: 820px; }
@@ -757,3 +757,10 @@ a.play__card:focus-visible { outline: 2px solid var(--cobalt); outline-offset: 6
   .strip--portrait .strip__open { position: relative; top: auto; bottom: auto; padding-top: calc(100cqw + 6px); }
   .strip--portrait .strip__content { max-width: none; }
 }
+
+/* Case study: two images side by side; a card can hold a short list */
+.cs-pair > div { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; align-items: start; }
+.cs-card .cs-list { margin: 0; font-size: 16px; color: var(--body); }
+.cs-section h4 + p { margin-top: 0; }
+.cs-section > h4 { margin-top: 28px; }
+@media (max-width: 760px) { .cs-pair > div { grid-template-columns: 1fr; } }

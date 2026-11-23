@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mark Spain Real Estate, Ashley Xie</title>
+  <meta name="description" content="Case study: a private B2B marketplace for Mark Spain's institutional partners, built to carry 50,000+ listings." />
+  <link rel="preload" href="../fonts/PPFrama-Regular.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="../fonts/PPFramaText-Regular.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="icon" type="image/svg+xml" href="../images/blob.svg" />
+  <link rel="icon" type="image/png" sizes="32x32" href="../images/favicon-32.png" />
+  <link rel="apple-touch-icon" href="../images/apple-touch-icon.png" />
+  <link rel="stylesheet" href="../css/style.css?v=20261123023530" />
+  <!-- The loading screen shows once per visit; later page changes skip it so the tab pill can slide -->
+  <script>try{if(sessionStorage.getItem('p26-loaded'))document.documentElement.classList.add('no-loader')}catch(e){}</script>
+</head>
+<body class="cs-page" style="--cs-accent:#2D5BE0;--cs-tint:#DCE6FC;--cs-on:#FAFAF7">
+  <div class="loader" id="loader" role="status" aria-label="Loading">
+    <div class="loader__mark"><img class="loader__blob" src="../images/blob.svg" alt="" aria-hidden="true" /><span class="loader__name">Ashley Xie</span></div>
+  </div>
+  <header class="nav">
+    <a class="nav__name" href="../"><img class="nav__star" src="../images/blob.svg" alt="" aria-hidden="true" />Ashley Xie</a>
+    <nav class="nav__tabs" aria-label="Main">
+      <a class="nav__tab is-active" href="../"><span class="nav__pill" aria-hidden="true"></span><span class="nav__label" style="view-transition-name:nav-work">Work</span></a>
+      <a class="nav__tab" href="../about/"><span class="nav__label" style="view-transition-name:nav-about">About</span></a>
+      <a class="nav__tab" href="../play/"><span class="nav__label" style="view-transition-name:nav-play">Play</span></a>
+    </nav>
+    <a class="nav__cta" href="https://www.linkedin.com/in/ashley-xie/" target="_blank" rel="noopener noreferrer">
+      <span>Say hi</span>
+      <span class="nav__cta-icon" aria-hidden="true">
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M4 14L14 4M6 4h8v8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </span>
+    </a>
+    <button class="nav__burger" aria-expanded="false" aria-controls="menu" aria-label="Menu">
+      <span></span><span></span>
+    </button>
+    <div class="menu" id="menu" hidden>
+      <nav class="menu__links" aria-label="Main">
+        <a class="menu__link is-active" href="../">Work</a>
+        <a class="menu__link" href="../about/">About</a>
+        <a class="menu__link" href="../play/">Play</a>
+      </nav>
+      <a class="menu__cta" href="https://www.linkedin.com/in/ashley-xie/" target="_blank" rel="noopener noreferrer">
+        <span>Say hi</span>
+        <span class="nav__cta-icon" aria-hidden="true">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M4 14L14 4M6 4h8v8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </span>
+      </a>
+    </div>
+  </header>
+
+  <main class="cs">
+    <section class="cs-hero" aria-labelledby="cs-title">
+      <div class="cs-hero__left">
+        <ul class="strip__tags cs-tags"><li class="tag">UI design</li><li class="tag">Proptech</li><li class="tag">Marketplace</li></ul>
+        <h1 class="cs-hero__title" id="cs-title">Mark Spain Real Estate</h1>
+      </div>
+      <div class="cs-hero__right">
+        <p>A private B2B marketplace built for institutional partners to purchase Mark Spain's acquired homes at a discounted rate, designed to handle 50,000+ listings with rapid per-property turnover. Currently in beta.</p>
+      </div>
+    </section>
+
+    <dl class="cs-meta">
+      <div><dt>Timeline</dt><dd>2 months</dd></div>
+      <div><dt>Role</dt><dd>UI/UX designer · collaborated on front-end build</dd></div>
+      <div><dt>Team</dt><dd>Designer (me) · 1 front-end developer</dd></div>
+      <div><dt>Deliverables</dt><dd>Live product (invitation-only)</dd></div>
+    </dl>
+  </main>
+
+  <figure class="cs-bleed">
+    <img src="../images/mark-spain/browse-1200.webp" srcset="../images/mark-spain/browse-1200.webp 1200w, ../images/mark-spain/browse-2400.webp 2400w" sizes="100vw" width="2400" height="1483" fetchpriority="high" alt="Mark Spain marketplace browse view with map" />
+  </figure>
+
+  <div class="cs cs-body">
+    <nav class="cs-nav" aria-label="Sections">
+      <ul>
+          <li><a class="cs-nav__link" href="#business-context">Business context</a></li>
+          <li><a class="cs-nav__link" href="#competitive-research">Competitive research</a></li>
+          <li><a class="cs-nav__link" href="#design-challenge">Design challenge</a></li>
+          <li><a class="cs-nav__link" href="#solution">Solution</a></li>
+          <li><a class="cs-nav__link" href="#outcomes">Outcomes</a></li>
+          <li><a class="cs-nav__link" href="#reflection">Reflection</a></li>
+      </ul>
+    </nav>
+    <div class="cs-sections">
+
+        <section class="cs-section" id="business-context">
+          <h2>Business context</h2>
+
+          <h3>A private acquisition channel for institutional buyers</h3>
+          <p>Mark Spain Real Estate is a high-volume homebuying company that makes quick-cash offers directly to sellers. To accelerate inventory turnover, their leadership wanted a private B2B marketplace: a platform where vetted institutional partners, firms like Invitation Homes, could browse available properties and submit purchase offers at a discounted rate before they hit the consumer market.</p>
+          <p>Each property carries a fixed acquisition window. Miss the deadline, and the property moves to Mark Spain's consumer-facing website. This urgency-driven model defined the product's design priorities from day one. The scale was significant: Mark Spain planned to list 50,000+ homes through this platform, a level of inventory and turnover that made off-the-shelf solutions non-viable and demanded purpose-built software.</p>
+          <figure class="cs-fig">
+            <img src="../images/mark-spain/listing-detail.webp" width="1800" height="1112" loading="lazy" decoding="async" alt="Mark Spain property listing detail view" />
+          </figure>
+          <figure class="cs-fig">
+            <img src="../images/mark-spain/proforma-detail.webp" width="1800" height="1112" loading="lazy" decoding="async" alt="Mark Spain pro forma calculator with Fix &amp; Flip and Buy &amp; Hold modes" />
+          </figure>
+          <figure class="cs-fig">
+            <img src="../images/mark-spain/submitted-offers.webp" width="1800" height="1112" loading="lazy" decoding="async" alt="Mark Spain submitted offers page" />
+          </figure>
+        </section>
+
+        <section class="cs-section" id="competitive-research">
+          <h2>Competitive research</h2>
+          <h3>Every existing platform was built for owners, not analysts</h3>
+          <p>Without access to direct user interviews, competitive research was my primary design input. I studied 15+ real estate platforms: from consumer-facing sites like Zillow and Redfin to investor-specific platforms like Roofstock.</p>
+          <p>The finding was consistent across all of them: virtually every platform I reviewed was optimized for the owner-occupant, a buyer evaluating one property at a time, with no time pressure, and fewer financial analytics. The institutional analyst workflow was the opposite: evaluating many properties quickly, filtering by financial signal, and moving toward submitting an offer with minimal friction.</p>
+          <blockquote class="cs-quote"><strong>Key competitive insight.</strong> No existing platform was built for how an institutional analyst actually works: high volume, time-pressured, and offer-driven. Mark Spain's marketplace couldn't borrow from existing patterns. It needed to be purpose-built.</blockquote>
+          <figure class="cs-fig">
+            <img src="../images/mark-spain/competitive.webp" width="1280" height="548" loading="lazy" decoding="async" alt="Competitive research across consumer and investor real estate platforms" />
+            <figcaption>Competitive analysis across 15+ consumer and investor real estate platforms, including Zillow, Redfin, and Roofstock.</figcaption>
+          </figure>
+        </section>
+
+        <section class="cs-section" id="design-challenge">
+          <h2>Design challenge</h2>
+          <h3>Speed vs. depth for expert users moving fast</h3>
+          <p>The core tension: institutional analysts need enough data per property to make a confident offer decision, but they're evaluating dozens of properties at a time, often in a single session. An interface that surfaces every detail for every property slows them down. An interface that hides too much creates hesitation that delays offers.</p>
+          <div class="cs-cards">
+            <blockquote class="cs-quote"><strong>The case for depth.</strong> Analysts are making financial commitments on properties they've often never visited. Without sufficient data (location context, flood risk, school zones) they won't commit. Confidence requires completeness.</blockquote>
+            <blockquote class="cs-quote"><strong>The case for speed.</strong> Analysts managing a pipeline of hundreds of properties can't spend five minutes on each one. An interface that treats every property as equally worth deep-diving actively slows down the people the platform was built to serve.</blockquote>
+          </div>
+          <p>The resolution: model what 80% of users do 80% of the time, and design the default experience for that, while keeping the deeper layer accessible for when they need it.</p>
+        </section>
+
+        <section class="cs-section" id="solution">
+          <h2>Solution</h2>
+          <h3>Designing for analyst speed without sacrificing trust</h3>
+          <div class="cs-step">
+            <div>
+              <p class="cs-step__num">01</p>
+              <h4>Minimizing the map</h4>
+              <p>Most real estate platforms lead with the map. For this user, the map was a secondary tool: analysts needed just enough location context to confirm a property was in the right area. They weren't exploring neighborhoods; they were validating a data point.</p>
+              <p>I kept the map accessible in the listing view but de-emphasized it. Deeper geographic overlays (school zones, flood zones, neighborhood data) were available for the analysts who needed them. On the individual property detail view, the map was removed entirely. That screen prioritized the property metrics that drive offer decisions: pricing, condition, timeline, and financials. The map's absence was intentional: if you're on the detail page, you've already decided the location works.</p>
+            </div>
+          <figure class="cs-fig">
+            <img src="../images/mark-spain/map.webp" width="885" height="1280" loading="lazy" decoding="async" alt="Mark Spain map view showing clustered home listings across the US" />
+          </figure>
+          </div>
+          <div class="cs-step">
+            <div>
+              <p class="cs-step__num">02</p>
+              <h4>A cart built for bulk operations</h4>
+              <p>Analysts are expected to submit hundreds of offers and manage an ongoing pipeline of saved properties. The standard e-commerce cart model (one item at a time, linear checkout) was completely wrong for this context.</p>
+              <p>I combined "My Cart" and "Submitted Offers" into a single unified page, eliminating the need to navigate between two separate tracking surfaces. The page included a collapsible search bar, property-level filtering, and mass selection for bulk offer submission. The submit offer CTA was given the highest visual hierarchy on the page (accent color, prominent placement) and the cart remained persistently accessible from the navigation bar at all times. Analysts could save, review, and submit in a continuous session without losing their place.</p>
+            </div>
+          <figure class="cs-fig">
+            <img src="../images/mark-spain/cart.webp" width="872" height="554" loading="lazy" decoding="async" alt="Mark Spain My Cart page showing bulk property selection and offer submission" />
+          </figure>
+          </div>
+          <div class="cs-step">
+            <div>
+              <p class="cs-step__num">03</p>
+              <h4>Graphical embellishments within brand guidelines</h4>
+              <p>Mark Spain Real Estate has established brand guidelines: color palette, typography, tone. Rather than override them, I looked for opportunities to add distinctive, product-specific moments of delight that elevated the platform beyond a functional utility.</p>
+              <ul class="cs-list">
+                <li><strong>Heart animation.</strong> When a user saves a property, a heart animates toward the saved items icon in the nav, reinforcing the action while directing attention to where saved properties live. A UX win disguised as a visual flourish.</li>
+                <li><strong>Red balloon illustration.</strong> Marks the completion of the offer submission flow. A small moment of reward at the most important conversion point in the product.</li>
+              </ul>
+              <p>These moments balanced Mark Spain's existing brand voice while signaling a level of craft that distinguishes a polished product from a functional one.</p>
+            </div>
+          <figure class="cs-fig">
+            <img src="../images/mark-spain/balloon.webp" width="1400" height="1057" loading="lazy" decoding="async" alt="Offer submitted confirmation screen with red balloon illustration" />
+          </figure>
+          </div>
+        </section>
+
+        <section class="cs-section" id="outcomes">
+          <h2>Outcomes</h2>
+          <h3>Currently in beta</h3>
+          <p>The marketplace is currently undergoing beta testing with invited institutional partners. The platform is invitation-only and not publicly accessible. No analytics data is available yet; results will be added as they come in from the beta period.</p>
+          <figure class="cs-fig">
+            <img src="../images/mark-spain/offer-submitted.webp" width="1800" height="1112" loading="lazy" decoding="async" alt="Mark Spain offer submitted confirmation with red balloon illustration" />
+          </figure>
+        </section>
+
+        <section class="cs-section" id="reflection">
+          <h2>Reflection</h2>
+          <h3>What I'd do differently</h3>
+          <ul class="cs-list">
+            <li><strong>Direct user research from the start.</strong> Competitive analysis gave me a useful foundation, but it's a filtered lens. I was designing for institutional analysts without ever speaking to one. Some of my assumptions (around how much time analysts actually spend on the map, or what information they need before committing to an offer) were directionally right, but came from inference rather than evidence. Even two or three analyst interviews at the research phase would have sharpened the brief significantly.</li>
+            <li><strong>Earlier alignment on the cart model.</strong> Combining "My Cart" and "Submitted Offers" into a single page was a judgment call made mid-project. It was the right call, but it would have been better to pressure-test that decision earlier: the merge had downstream implications for how submitted offer states were displayed and how analysts navigated between active and completed pipelines. Getting stakeholder sign-off on that model before designing it would have saved revision cycles.</li>
+            <li><strong>A more systematic approach to the time-pressure mechanic.</strong> The countdown window on each property, the core business logic of the platform, was something I designed around but never fully stress-tested in the UI. What does the experience look like when a property has two hours left? Two minutes? Does the urgency translate in a way that prompts action rather than anxiety? These edge states deserved more deliberate design attention than they got.</li>
+          </ul>
+        </section>
+
+    </div>
+  </div>
+
+  <nav class="cs cs-pn" aria-label="More case studies">
+    <a class="cs-pn__card" href="https://a2px.github.io/portfolio/#mini-projects-heading">
+      <img src="../images/cards/cma-poster.webp" width="1120" height="1484" loading="lazy" alt="" />
+      <span class="cs-pn__label"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M17 10H3M9 4l-6 6 6 6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg> Previous</span>
+      <span class="cs-pn__title">Comparative Market Analysis</span>
+    </a>
+    <a class="cs-pn__card cs-pn__card--next" href="../lennar/">
+      <img src="../images/cards/lennar-poster.webp" width="1120" height="630" loading="lazy" alt="" />
+      <span class="cs-pn__label">Next <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M3 10h14M11 4l6 6-6 6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      <span class="cs-pn__title">Lennar Investor Marketplace</span>
+    </a>
+  </nav>
+
+  <script src="../js/main.js?v=20261123023530"></script>
+</body>
+</html>
