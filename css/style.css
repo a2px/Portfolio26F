@@ -15,6 +15,7 @@
   /* Palette: neutrals + four colours */
   --paper: #FAFAF7;
   --line: #E7E7E1;
+  --mid: #A3A39C; /* medium gray, added 2026-11-23 for the video frame strokes (decorative, not for text) */
   --body: #666660; /* palette Body gray #6E6E68, darkened just enough to reach WCAG AA 4.5:1 on Mist and Line gray */
   --ink: #141413;
   --cobalt: #2D5BE0;
@@ -178,7 +179,7 @@ a { color: inherit; text-decoration: none; }
 .strip__frame {
   position: absolute; left: calc(var(--open-w) * .5); top: 17%; bottom: 7.5%;
   width: calc(var(--open-w) * .6);
-  border: 2px solid var(--body); border-right: 0; border-radius: 22px 0 0 22px;
+  border: 2px solid var(--mid); border-right: 0; border-radius: 22px 0 0 22px;
   overflow: hidden; background: var(--paper);
 }
 .strip__img {
@@ -220,7 +221,7 @@ a { color: inherit; text-decoration: none; }
   .strip--shot .strip__frame {
     left: var(--inset); width: calc(var(--open-w) - 2 * var(--inset));
     top: 15%; bottom: calc(100% - var(--band));
-    border: 2px solid var(--body); border-bottom: 0; border-radius: 22px 22px 0 0;
+    border: 2px solid var(--mid); border-bottom: 0; border-radius: 22px 22px 0 0;
   }
   .strip--shot .strip__img { object-position: var(--pos2, 0 0); transform: scale(var(--zoom2, 1)); transform-origin: var(--pos2, 0 0); }
   .strip--shot .strip__open { padding-left: var(--inset); padding-right: var(--pad); }
@@ -237,7 +238,7 @@ a { color: inherit; text-decoration: none; }
      video fills the frame's height at its own shape, so its right side carries on past the card */
   .strip--shot .strip__frame {
     left: var(--pad); right: 0; width: auto;
-    border: 2px solid var(--body); border-right: 0; border-bottom: 0; border-radius: 16px 0 0 0;
+    border: 2px solid var(--mid); border-right: 0; border-bottom: 0; border-radius: 16px 0 0 0;
     height: calc(75cqw - 56px);
   }
   .strip--shot .strip__img { transform: none; object-fit: cover; object-position: 0 0; }
