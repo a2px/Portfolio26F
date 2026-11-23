@@ -235,11 +235,16 @@ a { color: inherit; text-decoration: none; }
 @media (max-width: 760px) {
   .strip--shot .strip__media { background: linear-gradient(var(--tint) 0 calc(75cqw + 8px), #fff calc(75cqw + 8px)); }
   .strip--shot .strip__media::after { content: none; }
+  /* Ashley's mobile mock: the frame starts at the left inset and runs off the right edge, and the
+     video fills the frame's height at its own shape, so its right side carries on past the card */
   .strip--shot .strip__frame {
-    left: var(--pad); right: var(--pad); width: auto;
-    border: 2px solid var(--ink); border-bottom: 0; border-radius: 16px 16px 0 0;
+    left: var(--pad); right: 0; width: auto;
+    border: 2px solid var(--ink); border-right: 0; border-bottom: 0; border-radius: 16px 0 0 0;
     height: calc(75cqw - 56px);
   }
+  .strip--shot .strip__img { transform: none; object-fit: cover; object-position: 0 0; }
+  .strip--shot .strip__tags { display: flex; max-width: none; }
+  .strip--shot .strip__top { position: absolute; top: 18px; right: 18px; left: var(--pad); min-height: 0; }
 }
 /* Shorter desktop screens: give the white band more room for the text */
 @media (min-width: 1201px) and (max-height: 860px) {
@@ -402,7 +407,7 @@ a { color: inherit; text-decoration: none; }
   .strip { cursor: default !important; }
   /* Project cards grow to fit their text below the framed video */
   .strip--shot[data-open] { height: auto; }
-  .strip--shot .strip__open { position: relative; top: auto; bottom: auto; padding-top: calc(75cqw + 8px + 6px); }
+  .strip--shot .strip__open { position: relative; top: auto; bottom: auto; padding-top: calc(75cqw + 8px + 28px); }
   .acc__track { gap: 12px; }
 
   .strip__frame { left: var(--pad); right: 0; width: auto; top: 64px; bottom: auto; height: calc(75cqw - 56px); border-radius: 18px 0 0 18px; }
@@ -699,6 +704,7 @@ a.play__card:focus-visible { outline: 2px solid var(--cobalt); outline-offset: 6
 
 /* Counter fills in headings: the enclosed holes of e and A filled with apricot, sitting behind
    the letter. Sizes measured from the PP Frama glyphs (em, so they scale with the heading). */
+.nw { white-space: nowrap; } /* keeps a word with filled letters from splitting across lines */
 .fill-e, .fill-A, .fill-b, .fill-o { position: relative; display: inline-block; isolation: isolate; }
 .fill-e::before, .fill-A::before, .fill-b::before, .fill-o::before { content: ""; position: absolute; z-index: -1; pointer-events: none; background: var(--fill-color, var(--apricot)); }
 .fill-b::before { left: .145em; top: .40em; width: .42em; height: .42em; border-radius: 50%; }
@@ -711,3 +717,38 @@ a.play__card:focus-visible { outline: 2px solid var(--cobalt); outline-offset: 6
 
 /* Open project cards are links to their case study as a whole */
 .strip--shot[data-open] { cursor: pointer; }
+
+/* Intro with a portrait photo of Ashley (trial 2026-11-23): the photo fills the right half of the
+   open card, framed on her (she stands lower left of centre), and fades into the tint on its left
+   edge; the text sits on the plain tint to the left, so nothing ever covers her. */
+.strip--portrait { --split: .5; }
+.strip--portrait .strip__img {
+  left: calc(var(--open-w) * var(--split)); width: calc(var(--open-w) * (1 - var(--split)));
+  height: 100%; object-fit: cover; object-position: 38% 78%;
+}
+.strip--portrait .strip__media::after {
+  background: linear-gradient(to right, var(--tint) 0 calc(var(--open-w) * var(--split)), transparent calc(var(--open-w) * var(--split) + 72px));
+}
+.strip--portrait .strip__content { max-width: calc(var(--open-w) * var(--split) - var(--pad) - 8px); }
+.strip--portrait .strip__desc { max-width: 34ch; }
+/* Small laptops and tablets: the open card is too narrow to share, so the photo sits on top
+   (framed on her) and the text below on the tint. */
+@media (min-width: 761px) and (max-width: 1200px) {
+  .strip--portrait .strip__img { left: 0; width: var(--open-w); height: var(--band, 44%); object-position: 38% 80%; }
+  .strip--portrait .strip__media::after { background: linear-gradient(to bottom, transparent calc(var(--band, 44%) - 48px), var(--tint) var(--band, 44%)); }
+  .strip--portrait .strip__content { max-width: none; margin-top: auto; }
+  .strip--portrait .strip__title { font-size: clamp(30px, calc(var(--open-w) * .1), 48px); }
+  .strip--portrait .strip__desc { font-size: 16px; margin-bottom: 16px; }
+  .strip--portrait .strip__top { display: none; }
+  .strip--portrait .logo { width: 48px; height: 48px; border-radius: 10px; }
+}
+@media (max-width: 760px) {
+  .strip--portrait[data-open] { height: auto; }
+  .strip--portrait .strip__img {
+    left: 0; width: 100%; height: auto; aspect-ratio: 1; object-position: 38% 82%;
+    -webkit-mask-image: none; mask-image: none;
+  }
+  .strip--portrait .strip__media::after { content: none; }
+  .strip--portrait .strip__open { position: relative; top: auto; bottom: auto; padding-top: calc(100cqw + 6px); }
+  .strip--portrait .strip__content { max-width: none; }
+}

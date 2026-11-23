@@ -124,13 +124,15 @@
 // Open project cards (desktop and mid-size): the pale blue band and screenshot end just above
 // the title block, however many lines the title and description take at this width.
 (function () {
-  const shots = Array.from(document.querySelectorAll('.strip--shot'));
+  const shots = Array.from(document.querySelectorAll('.strip--shot, .strip--portrait'));
   if (!shots.length) return;
   const GAP = 28;
   function fit() {
     const desktop = window.innerWidth > 760;
     shots.forEach((s) => {
-      if (!desktop) { s.style.removeProperty('--band'); return; }
+      // the intro photo only stacks above its text on small laptops and tablets
+      const portraitSide = s.classList.contains('strip--portrait') && window.innerWidth > 1200;
+      if (!desktop || portraitSide) { s.style.removeProperty('--band'); return; }
       const content = s.querySelector('.strip__content');
       const open = s.querySelector('.strip__open');
       const padB = parseFloat(getComputedStyle(open).paddingBottom) || 0;
