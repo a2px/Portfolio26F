@@ -138,6 +138,16 @@
       const padB = parseFloat(getComputedStyle(open).paddingBottom) || 0;
       const band = s.clientHeight - content.offsetHeight - padB - GAP;
       s.style.setProperty('--band', Math.max(band, s.clientHeight * 0.35) + 'px');
+      // Large screens: if the centred 16:9 video would leave more than ~80px of empty tint above
+      // it, switch this card to the run-off-the-edge layout (see .is-bleed in the CSS).
+      const frame = s.querySelector('.strip__frame--whole');
+      if (frame) {
+        s.classList.remove('is-bleed');
+        if (window.innerWidth > 1200) {
+          const roomH = Math.max(band, s.clientHeight * 0.35) - parseFloat(getComputedStyle(open).paddingTop || 0) - 52;
+          if (roomH - frame.offsetWidth * 9 / 16 > 80) s.classList.add('is-bleed');
+        }
+      }
     });
   }
   fit();

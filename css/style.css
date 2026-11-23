@@ -267,6 +267,33 @@ a { color: inherit; text-decoration: none; }
 
 .strip--intro .strip__desc { max-width: 40ch; }
 
+/* Wide card videos are never cut at the sides (Ashley 2026-11-23). Large screens: the frame stays
+   centred between the insets and the video fills its full width, only its bottom hidden by the
+   white band. Tablet and phone: the frame keeps the video's own 16:9 shape at the height the layout
+   gives it and runs off the card's right edge. (CMA's video is tall, so its frame keeps the crop.) */
+@media (min-width: 1201px) {
+  .strip--shot .strip__frame--whole .strip__img { bottom: auto; height: auto; transform: none; }
+  /* never taller than the video: the frame grows up from the band's edge only as far as the video goes */
+  .strip--shot .strip__frame--whole { top: auto; height: min(calc(var(--band) - 15%), calc((var(--open-w) - 2 * var(--inset)) * 9 / 16)); }
+  /* Tall-for-its-width cards (main.js sets .is-bleed when the centred video would leave a gap above
+     it): like the tablet layout, the video fills the height under the tags and runs off the right edge */
+  .strip--shot.is-bleed .strip__frame--whole {
+    top: calc(var(--pad) + 30px + 22px); height: auto; width: auto; right: auto; aspect-ratio: 16 / 9;
+    border-right: 0; border-radius: 22px 0 0 0;
+  }
+  .strip--shot.is-bleed .strip__frame--whole .strip__img { bottom: 0; height: 100%; object-fit: cover; object-position: 0 0; }
+}
+@media (max-width: 1200px) {
+  .strip--shot .strip__frame--whole { right: auto; width: auto; aspect-ratio: 16 / 9; }
+  .strip--shot .strip__frame--whole .strip__img { transform: none; object-fit: cover; object-position: 0 0; }
+}
+@media (min-width: 761px) and (max-width: 1200px) {
+  .strip--shot .strip__frame--whole { border-right: 1px solid var(--line); border-radius: 22px 22px 0 0; }
+}
+@media (max-width: 760px) {
+  .strip--shot .strip__frame--whole { border-right: 1px solid var(--line); border-radius: 16px 16px 0 0; }
+}
+
 /* Closed state: sideways title, plus */
 .strip__closed {
   color: var(--on-accent);
@@ -756,24 +783,24 @@ a.play__card:focus-visible { outline: 2px solid var(--cobalt); outline-offset: 6
 /* Open project cards are links to their case study as a whole */
 .strip--shot[data-open] { cursor: pointer; }
 
-/* Intro with a portrait photo of Ashley (trial 2026-11-23): the photo fills the right half of the
-   open card, framed on her (she stands lower left of centre), and fades into the tint on its left
-   edge; the text sits on the plain tint to the left, so nothing ever covers her. */
-.strip--portrait { --split: .5; }
+/* Intro with a portrait photo of Ashley: the text sits on the plain tint on the left and the
+   photo fills the rest of the open card, framed on her, with a clean edge (no fade; Ashley
+   2026-11-23). The photo starts one --pad past the text column, so the tint has the same margin
+   on both sides of the text. */
+.strip--portrait { --split: .5; --photo-x: calc(var(--open-w) * var(--split) + var(--pad) - 8px); }
 .strip--portrait .strip__img {
-  left: calc(var(--open-w) * var(--split)); width: calc(var(--open-w) * (1 - var(--split)));
+  left: var(--photo-x); width: calc(var(--open-w) - var(--photo-x));
   height: 100%; object-fit: cover; object-position: 38% 78%;
 }
-.strip--portrait .strip__media::after {
-  background: linear-gradient(to right, var(--tint) 0 calc(var(--open-w) * var(--split)), transparent calc(var(--open-w) * var(--split) + 72px));
-}
+.strip--portrait .strip__media::after { content: none; }
+/* Skill pills stay on the photo: they wrap rather than cross its left edge */
+.strip--portrait .strip__tags { max-width: calc(var(--open-w) - var(--photo-x) - var(--pad) - 16px); }
 .strip--portrait .strip__content { max-width: calc(var(--open-w) * var(--split) - var(--pad) - 8px); }
 .strip--portrait .strip__desc { max-width: 34ch; }
 /* Small laptops and tablets: the open card is too narrow to share, so the photo sits on top
    (framed on her) and the text below on the tint. */
 @media (min-width: 761px) and (max-width: 1200px) {
   .strip--portrait .strip__img { left: 0; width: var(--open-w); height: var(--band, 44%); object-position: 38% 80%; }
-  .strip--portrait .strip__media::after { background: linear-gradient(to bottom, transparent calc(var(--band, 44%) - 48px), var(--tint) var(--band, 44%)); }
   .strip--portrait .strip__content { max-width: none; margin-top: auto; }
   .strip--portrait .strip__title { font-size: clamp(30px, calc(var(--open-w) * .1), 48px); }
   .strip--portrait .strip__desc { font-size: 16px; margin-bottom: 16px; }
