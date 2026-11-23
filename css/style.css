@@ -44,18 +44,19 @@ a { color: inherit; text-decoration: none; }
 .nav__name, .strip__title, .strip__vtitle { font-family: "PP Frama", system-ui, sans-serif; font-weight: 400; }
 
 /* ---------- Loading screen ----------
-   Spinning star and name from the old portfolio, at twice the size (72px star, 32px name). */
+   Ashley's orange mark at 400px, spinning, with her name held still in the middle. */
 .loader {
   position: fixed; inset: 0; z-index: 100; background: var(--paper);
-  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 24px;
+  display: grid; place-items: center;
   transition: opacity .375s ease;
 }
 .loader.is-hidden { opacity: 0; pointer-events: none; }
 .no-loader .loader { display: none; }
-.loader__star { width: 72px; height: 72px; animation: loader-spin 1.1s linear infinite; }
-.loader__name { font-family: "PP Frama", system-ui, sans-serif; font-size: 32px; letter-spacing: -.01em; color: var(--ink); }
+.loader__mark { position: relative; width: min(400px, 82vw); aspect-ratio: 1; display: grid; place-items: center; }
+.loader__blob { position: absolute; inset: 0; width: 100%; height: 100%; animation: loader-spin 2.4s linear infinite; }
+.loader__name { position: relative; font-family: "PP Frama", system-ui, sans-serif; font-size: clamp(28px, 4vw, 40px); letter-spacing: -.01em; color: var(--ink); }
 @keyframes loader-spin { to { transform: rotate(360deg); } }
-@media (prefers-reduced-motion: reduce) { .loader__star { animation-duration: 4s; } }
+@media (prefers-reduced-motion: reduce) { .loader__blob { animation-duration: 8s; } }
 
 /* ---------- Top bar ---------- */
 .nav {
@@ -65,7 +66,7 @@ a { color: inherit; text-decoration: none; }
   padding: 20px clamp(20px, 3.6vw, 48px);
 }
 .nav__name { display: inline-flex; align-items: center; gap: 8px; justify-self: start; font-size: 21px; letter-spacing: 0; }
-.nav__star { width: 22px; height: 22px; flex: none; }
+.nav__star { width: 22px; height: 22px; flex: none; object-fit: contain; }
 .nav__tabs {
   display: flex; gap: 4px; padding: 4px;
   background: var(--grey-1); border-radius: 999px;
@@ -681,12 +682,12 @@ a.play__card:focus-visible { outline: 2px solid var(--cobalt); outline-offset: 6
   .cs-section p, .cs-list, .cs-quote { font-size: 16px; }
 }
 
-/* Play heading: the bowl of the "a" is filled with apricot (decorative, sits behind the letter) */
+/* Play heading: the bowl of the "a" is filled with lime (decorative, sits behind the letter) */
 .play__a { position: relative; display: inline-block; isolation: isolate; }
 .play__a::before {
   content: ""; position: absolute; z-index: -1; pointer-events: none;
   left: var(--a-l, .10em); top: var(--a-t, .36em); width: var(--a-w, .47em); height: var(--a-h, .49em);
-  border-radius: 50%; background: var(--apricot);
+  border-radius: 50%; background: var(--lime);
 }
 
 /* Counter fills in headings: the enclosed holes of e and A filled with apricot, sitting behind
