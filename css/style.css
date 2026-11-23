@@ -385,6 +385,13 @@ a { color: inherit; text-decoration: none; }
   .menu__links { display: flex; flex-direction: column; }
   .menu__link { padding: 16px 18px; border-radius: 16px; font-size: 20px; letter-spacing: -.01em; }
   .menu__link.is-active { background: var(--grey-1); font-weight: 700; font-synthesis: weight; }
+  /* Hover and press feedback on the menu links */
+  .menu__link { transition: background .18s ease, transform .18s ease; -webkit-tap-highlight-color: transparent; }
+  .menu__link:hover { background: color-mix(in srgb, var(--line) 60%, transparent); }
+  .menu__link:active { background: var(--line); transform: scale(.98); }
+  .menu__link.is-active:hover, .menu__link.is-active:active { background: var(--line); }
+  .menu__link:focus-visible { outline: 2px solid var(--cobalt); outline-offset: -2px; }
+  .menu__cta:active { transform: scale(.98); }
   .menu__cta {
     display: flex; align-items: center; justify-content: space-between;
     min-height: 52px; padding: 6px 6px 6px 22px; border-radius: 999px;
