@@ -224,3 +224,22 @@
   new ResizeObserver(check).observe(grid);
   check();
 })();
+
+// Play page: a card with data-play-modal opens its <dialog> with a larger looping video.
+// Escape (native), the close button, or a click on the dark backdrop shuts it; the video only
+// plays while the window is open. Without JS the card link opens the video file itself.
+(function () {
+  document.querySelectorAll('a[data-play-modal]').forEach((card) => {
+    const modal = document.getElementById(card.dataset.playModal);
+    if (!modal || typeof modal.showModal !== 'function') return;
+    const video = modal.querySelector('video');
+    card.addEventListener('click', (e) => {
+      e.preventDefault();
+      modal.showModal();
+      if (video) video.play().catch(() => {});
+    });
+    modal.querySelector('.play-modal__close').addEventListener('click', () => modal.close());
+    modal.addEventListener('click', (e) => { if (e.target === modal) modal.close(); });
+    modal.addEventListener('close', () => { if (video) video.pause(); card.focus(); });
+  });
+})();

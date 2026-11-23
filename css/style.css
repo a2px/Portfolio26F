@@ -596,11 +596,38 @@ a.exp__company:focus-visible { outline: 2px solid var(--cobalt); outline-offset:
   background: var(--cobalt); color: var(--lime); opacity: 0; transform: scale(.8);
   transition: opacity .25s ease, transform .4s var(--out);
 }
-a.play__card:hover .play__media img { transform: scale(1.03); }
+a.play__card:hover .play__media img, a.play__card:hover .play__media video { transform: scale(1.03); }
 a.play__card:hover .play__go, a.play__card:focus-visible .play__go { opacity: 1; transform: none; }
 a.play__card:hover .play__title { color: var(--cobalt); }
 a.play__card:focus-visible { outline: 2px solid var(--cobalt); outline-offset: 6px; border-radius: 22px; }
 @media (hover: none) { .play__go { opacity: 1; transform: none; } }
+/* Enlarged video window (Personal computing interface card) */
+.play-modal {
+  width: min(1200px, 100vw - 48px); max-width: none; max-height: calc(100vh - 48px); padding: 0; border: 0;
+  background: transparent; overflow: visible;
+}
+.play-modal::backdrop { background: rgba(20, 20, 19, .72); }
+.play-modal__video {
+  display: block; width: 100%; height: auto; max-height: calc(100vh - 48px); object-fit: contain;
+  border-radius: 22px; border: 1px solid var(--line); background: var(--mist);
+}
+.play-modal__close {
+  position: absolute; top: 16px; right: 16px; z-index: 1; display: grid; place-items: center;
+  width: 44px; height: 44px; border: 0; border-radius: 50%; cursor: pointer;
+  background: var(--cobalt); color: var(--lime); transition: transform .3s var(--out);
+}
+.play-modal__close:hover { transform: scale(1.08); }
+.play-modal__close:focus-visible { outline: 2px solid var(--paper); outline-offset: 3px; }
+.play-modal[open] { animation: play-modal-in .45s var(--out); }
+.play-modal[open]::backdrop { animation: play-modal-fade .3s ease; }
+@keyframes play-modal-in { from { opacity: 0; transform: scale(.96); } }
+@keyframes play-modal-fade { from { opacity: 0; } }
+@media (max-width: 760px) {
+  .play-modal { width: calc(100vw - 24px); }
+  .play-modal__video { border-radius: 16px; }
+  .play-modal__close { width: 40px; height: 40px; top: 10px; right: 10px; }
+}
+@media (prefers-reduced-motion: reduce) { .play-modal[open], .play-modal[open]::backdrop { animation: none; } }
 /* Wide screens: three columns */
 @media (min-width: 1056px) {
   .play__grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 56px 32px; }

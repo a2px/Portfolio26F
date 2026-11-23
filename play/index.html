@@ -10,7 +10,7 @@
   <link rel="icon" type="image/svg+xml" href="../images/blob.svg" />
   <link rel="icon" type="image/png" sizes="32x32" href="../images/favicon-32.png" />
   <link rel="apple-touch-icon" href="../images/apple-touch-icon.png" />
-  <link rel="stylesheet" href="../css/style.css?v=20261123192239" />
+  <link rel="stylesheet" href="../css/style.css?v=20261123225558" />
   <!-- The loading screen shows once per visit; later page changes skip it so the tab pill can slide -->
   <script>try{if(sessionStorage.getItem('p26-loaded'))document.documentElement.classList.add('no-loader')}catch(e){}</script>
 </head>
@@ -75,27 +75,25 @@
         </li>
         <li>
           <div class="play__card play__card--static">
-            <div class="play__media"><svg class="play__soon" viewBox="0 0 1200 675" role="img" aria-label="Two friends on a map with a meeting spot halfway between them">
-              <rect width="1200" height="675" fill="#BDE173"/>
-              <path d="M330 420 Q600 180 870 300" fill="none" stroke="#141413" stroke-width="4" stroke-dasharray="4 18" stroke-linecap="round"/>
-              <circle cx="330" cy="420" r="34" fill="#FAFAF7" stroke="#141413" stroke-width="4"/>
-              <circle cx="870" cy="300" r="34" fill="#FAFAF7" stroke="#141413" stroke-width="4"/>
-              <g transform="translate(600 296) scale(2.1) translate(-25.25 -26)"><path d="M50.5 28.5C50.5 39.5457 28.0457 52 17 52C5.9543 52 0 43.0457 0 32C0 20.9543 7.9543 0 19 0C30.0457 0 50.5 17.4543 50.5 28.5Z" fill="#FFB54C" stroke="#141413" stroke-width="1.9" stroke-linejoin="round"/></g>
-            </svg></div>
+            <div class="play__media"><img src="../images/play/playdate.webp" width="1200" height="675" decoding="async" alt="Playdate app showing two friends on a Bay Area map with a meeting spot in Emeryville halfway between them" /></div>
             <h2 class="play__title">Playdate project</h2>
             <p class="play__desc">Identifies cool hangout spots that are equidistant between both users for coordinating plans.</p>
           </div>
         </li>
         <li>
-          <div class="play__card play__card--static">
-            <div class="play__media"><video data-src-webm="../images/play/desktop.webm" data-src-mp4="../images/play/desktop.mp4" poster="../images/play/desktop-poster.webp" width="1280" height="720" muted loop playsinline preload="none" aria-label="Screen recording of my pond-themed desktop, with koi swimming between app icons on lily pads"></video></div>
+          <a class="play__card" href="../images/play/desktop.mp4" data-play-modal="desktop-modal" aria-haspopup="dialog">
+            <div class="play__media"><video data-src-webm="../images/play/desktop.webm" data-src-mp4="../images/play/desktop.mp4" poster="../images/play/desktop-poster.webp" width="1280" height="720" muted loop playsinline preload="none" aria-label="Screen recording of my pond-themed desktop, with koi swimming between app icons on lily pads"></video><span class="play__go" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M10.5 3.5h4v4M7.5 14.5h-4v-4M14.5 3.5L10 8M3.5 14.5L8 10" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
             <h2 class="play__title">Personal computing interface</h2>
             <p class="play__desc">Sparking whimsy in my daily desktop.</p>
-          </div>
+          </a>
         </li>
     </ul>
   </main>
 
-  <script src="../js/main.js?v=20261123192239"></script>
+  <dialog class="play-modal" id="desktop-modal" aria-label="Personal computing interface, screen recording">
+    <button class="play-modal__close" type="button" aria-label="Close"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 5l10 10M15 5L5 15" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button>
+    <video class="play-modal__video" poster="../images/play/desktop-poster.webp" width="1280" height="720" muted loop playsinline preload="none" aria-label="Screen recording of my pond-themed desktop, with koi swimming between app icons on lily pads"><source src="../images/play/desktop.webm" type="video/webm" /><source src="../images/play/desktop.mp4" type="video/mp4" /></video>
+  </dialog>
+  <script src="../js/main.js?v=20261123225558"></script>
 </body>
 </html>
