@@ -397,6 +397,13 @@ a { color: inherit; text-decoration: none; }
     background: var(--accent);
   }
   .strip[data-open] { height: calc(75cqw + 300px); background: var(--tint); }
+  /* Every card is open on phones, so the closed-state title bar and plus never show */
+  .strip__closed { display: none; }
+  .strip { cursor: default !important; }
+  /* Project cards grow to fit their text below the framed video */
+  .strip--shot[data-open] { height: auto; }
+  .strip--shot .strip__open { position: relative; top: auto; bottom: auto; padding-top: calc(75cqw + 8px + 6px); }
+  .acc__track { gap: 12px; }
 
   .strip__frame { left: var(--pad); right: 0; width: auto; top: 64px; bottom: auto; height: calc(75cqw - 56px); border-radius: 18px 0 0 18px; }
   .strip--intro .strip__img {

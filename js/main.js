@@ -79,11 +79,36 @@
     s.addEventListener('focusin', () => { if (!still) loadVideo(s); });
   });
 
+  // Phones: no accordion, every card is shown open and stacked. Each video plays while its card
+  // is on screen. Wider screens go back to one open card at a time.
+  const phone = window.matchMedia('(max-width: 760px)');
+  let lastOpen = strips.find((s) => s.hasAttribute('data-open')) || strips[0];
+  const seen = new IntersectionObserver((entries) => {
+    entries.forEach((e) => { if (phone.matches) syncVideo(e.target, e.isIntersecting); });
+  }, { threshold: 0.35 });
+  function applyMode() {
+    if (phone.matches) {
+      strips.forEach((s) => {
+        s.setAttribute('data-open', '');
+        s.querySelector('.strip__plus').setAttribute('aria-expanded', 'true');
+        s.querySelector('.strip__open').inert = false;
+        seen.observe(s);
+      });
+    } else {
+      strips.forEach((s) => seen.unobserve(s));
+      open(lastOpen);
+    }
+  }
+
   strips.forEach((strip) => {
-    strip.addEventListener('click', () => { if (!strip.hasAttribute('data-open')) open(strip); });
+    strip.addEventListener('click', () => {
+      if (phone.matches || strip.hasAttribute('data-open')) return;
+      lastOpen = strip; open(strip);
+    });
   });
 
-  open(strips.find((s) => s.hasAttribute('data-open')) || strips[0]);
+  applyMode();
+  phone.addEventListener('change', applyMode);
 })();
 
 // Open project cards (desktop and mid-size): the pale blue band and screenshot end just above
