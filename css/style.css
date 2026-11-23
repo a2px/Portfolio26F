@@ -425,7 +425,7 @@ a { color: inherit; text-decoration: none; }
 
   .strip__open { width: auto; right: 0; }
   .strip__tags { display: none; }
-  .strip__title { font-size: clamp(36px, 11cqw, 48px); margin-bottom: 12px; }
+  .strip__title { font-size: clamp(28px, 8.4cqw, 36px); margin-bottom: 10px; }
   .strip__content { max-width: none; }
   .strip--intro .strip__img { width: 100%; height: auto; aspect-ratio: 4 / 3; }
   .strip--intro .strip__media::after { background: none; }
