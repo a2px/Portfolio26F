@@ -142,7 +142,11 @@
     links.forEach((a) => a.classList.toggle('is-current', byId.get(current.id) === a));
     const active = byId.get(current.id);
     const bar = active.closest('ul');
-    if (bar && bar.scrollWidth > bar.clientWidth) bar.scrollTo({ left: active.offsetLeft - 16, behavior: 'smooth' });
+    // Phone/tablet row: bring the current pill to the left edge (the first one sits flush left)
+    if (bar && bar.scrollWidth > bar.clientWidth) {
+      const x = active.getBoundingClientRect().left - bar.getBoundingClientRect().left + bar.scrollLeft;
+      bar.scrollTo({ left: Math.max(0, x), behavior: 'smooth' });
+    }
   }
   let ticking = false;
   window.addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(() => { update(); ticking = false; }); } }, { passive: true });
