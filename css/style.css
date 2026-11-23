@@ -160,12 +160,7 @@ a { color: inherit; text-decoration: none; }
 }
 .strip:not([data-open]) { cursor: pointer; }
 .strip[data-open] { flex-grow: 1; }
-.strip::after {
-  content: ""; position: absolute; inset: 0; z-index: 6; border-radius: inherit; pointer-events: none;
-  box-shadow: inset 0 0 0 1px rgba(20,20,19,.06);
-  transition: box-shadow .4s ease;
-}
-.strip[data-open]::after { box-shadow: inset 0 0 0 1.5px var(--edge); }
+/* No outline on the cards (removed at Ashley's request 2026-11-23) */
 
 /* Open card: blank light panel on the left; on project cards the screenshot sits in a
    framed window from the middle of the card, running off the right edge, zoomed in on
