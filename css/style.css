@@ -450,9 +450,9 @@ a { color: inherit; text-decoration: none; }
 .about__card {
   display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr); gap: var(--pad);
   padding: var(--pad); border-radius: 28px;
-  background: var(--mist); box-shadow: inset 0 0 0 1.5px var(--cobalt);
+  background: var(--mist);
 }
-.about__bio { display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-end; padding: 12px 0 4px; }
+.about__bio { display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start; padding: 0; }
 .about__label { margin: 0 0 16px; font-size: 14px; font-style: italic; color: var(--body); }
 .about__lead {
   margin: 0 0 28px; font-family: "PP Frama", system-ui, sans-serif; font-weight: 400;
