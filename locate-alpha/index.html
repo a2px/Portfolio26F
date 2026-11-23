@@ -10,7 +10,7 @@
   <link rel="icon" type="image/svg+xml" href="../images/blob.svg" />
   <link rel="icon" type="image/png" sizes="32x32" href="../images/favicon-32.png" />
   <link rel="apple-touch-icon" href="../images/apple-touch-icon.png" />
-  <link rel="stylesheet" href="../css/style.css?v=20261123035420" />
+  <link rel="stylesheet" href="../css/style.css?v=20261123170024" />
   <!-- The loading screen shows once per visit; later page changes skip it so the tab pill can slide -->
   <script>try{if(sessionStorage.getItem('p26-loaded'))document.documentElement.classList.add('no-loader')}catch(e){}</script>
 </head>
@@ -220,19 +220,27 @@
     </div>
   </div>
 
-  <nav class="cs cs-pn" aria-label="More case studies">
-    <a class="cs-pn__card" href="../lennar/">
-      <img src="../images/cards/lennar-poster.webp" width="1120" height="630" loading="lazy" alt="" />
-      <span class="cs-pn__label"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M17 10H3M9 4l-6 6 6 6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg> Previous</span>
-      <span class="cs-pn__title">Lennar Investor Marketplace</span>
-    </a>
-    <a class="cs-pn__card cs-pn__card--next" href="https://a2px.github.io/portfolio/#mini-projects-heading">
-      <img src="../images/cards/cma-poster.webp" width="1120" height="1484" loading="lazy" alt="" />
-      <span class="cs-pn__label">Next <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M3 10h14M11 4l6 6-6 6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-      <span class="cs-pn__title">Comparative Market Analysis</span>
-    </a>
-  </nav>
+  <section class="cs cs-more" aria-labelledby="more-h">
+    <div class="cs-more__head">
+      <h2 class="cs-more__h" id="more-h">More projects</h2>
+      <a class="cs-more__all" href="../#work">View all</a>
+    </div>
+    <div class="cs-more__grid">
+      <a class="cs-more__card" href="../lennar/">
+        <span class="cs-more__img" style="--tint:#E2F0C2"><img src="../images/cards/lennar-poster.webp" loading="lazy" alt="" /></span>
+        <span class="cs-more__title">Investor Marketplace, <span class="cs-more__client">Lennar</span></span>
+      </a>
+      <a class="cs-more__card" href="https://a2px.github.io/portfolio/#mini-projects-heading">
+        <span class="cs-more__img" style="--tint:#E8E8E5"><img src="../images/cards/cma-poster.webp" loading="lazy" alt="" /></span>
+        <span class="cs-more__title">Map Menu Overhaul, <span class="cs-more__client">Comparative Market Analysis</span></span>
+      </a>
+      <a class="cs-more__card" href="../mark-spain/">
+        <span class="cs-more__img" style="--tint:#DCE6FC"><img src="../images/cards/mark-spain-poster.webp" loading="lazy" alt="" /></span>
+        <span class="cs-more__title">B2B Marketplace, <span class="cs-more__client">Mark Spain Real Estate</span></span>
+      </a>
+    </div>
+  </section>
 
-  <script src="../js/main.js?v=20261123035420"></script>
+  <script src="../js/main.js?v=20261123170024"></script>
 </body>
 </html>
