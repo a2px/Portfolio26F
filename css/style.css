@@ -764,3 +764,11 @@ a.play__card:focus-visible { outline: 2px solid var(--cobalt); outline-offset: 6
 .cs-section h4 + p { margin-top: 0; }
 .cs-section > h4 { margin-top: 28px; }
 @media (max-width: 760px) { .cs-pair > div { grid-template-columns: 1fr; } }
+
+/* Client logos: one row when all seven fit; otherwise three on top and four below, never six and
+   one (main.js measures and sets .is-split). Tiles keep their size, shrinking only if four won't fit. */
+.logos__grid.is-split { display: grid; grid-template-columns: repeat(4, minmax(0, var(--tile, 64px))); }
+.logos__grid.is-split .logo { width: 100%; height: auto; aspect-ratio: 1; }
+.logos__grid.is-split .logo:nth-child(4) { grid-column-start: 1; }
+@media (max-width: 760px) { .logos__grid { --tile: 56px; } }
+@media (min-width: 761px) and (max-width: 1200px) { .strip--portrait .logos__grid { --tile: 48px; } }

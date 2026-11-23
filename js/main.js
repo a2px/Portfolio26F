@@ -209,3 +209,18 @@
   window.addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(() => { update(); ticking = false; }); } }, { passive: true });
   update();
 })();
+
+// Client logos: three-and-four split whenever all seven won't fit on one line.
+(function () {
+  const grid = document.querySelector('.logos__grid');
+  if (!grid) return;
+  const items = Array.from(grid.children);
+  function check() {
+    const tile = parseFloat(getComputedStyle(grid).getPropertyValue('--tile')) || 64;
+    const gap = parseFloat(getComputedStyle(grid).columnGap) || 8;
+    const need = items.length * tile + (items.length - 1) * gap;
+    grid.classList.toggle('is-split', grid.clientWidth < need - 0.5);
+  }
+  new ResizeObserver(check).observe(grid);
+  check();
+})();
