@@ -583,6 +583,12 @@ a.play__card:hover .play__go, a.play__card:focus-visible .play__go { opacity: 1;
 a.play__card:hover .play__title { color: var(--cobalt); }
 a.play__card:focus-visible { outline: 2px solid var(--cobalt); outline-offset: 6px; border-radius: 22px; }
 @media (hover: none) { .play__go { opacity: 1; transform: none; } }
+/* Wide screens: three columns */
+@media (min-width: 1056px) {
+  .play__grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 56px 32px; }
+  .play__title { font-size: clamp(24px, 1.9vw, 30px); }
+  .play__desc { font-size: 17px; }
+}
 @media (max-width: 760px) {
   .play { padding: 20px 16px 64px; }
   .play__grid { grid-template-columns: 1fr; gap: 40px; }
