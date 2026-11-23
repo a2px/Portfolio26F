@@ -22,19 +22,19 @@
 (function () {
   const strips = Array.from(document.querySelectorAll('.strip'));
 
-  // Card videos (the old portfolio's screen recordings): each loads the first time its card is
-  // hovered, focused or opened, plays only while its card is open, and skips the fade-in from
-  // white at the start. With reduced motion the still frame stays.
+  // Card videos (the old portfolio's screen recordings, trimmed to start after their fade-in):
+  // phones get a smaller copy. Each loads the first time its card is hovered, focused or opened,
+  // and once the page has settled the rest load quietly one by one in card order, so opening a
+  // card usually plays at once. Skipped on data-saver or very slow connections. Plays only while
+  // its card is open; with reduced motion the still frame stays.
   const still = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const small = window.matchMedia('(max-width: 760px)').matches;
   function loadVideo(s) {
     const v = s.querySelector('video[data-card-mp4]');
     if (!v || v.dataset.loaded) return v;
     v.dataset.loaded = '1';
-    [['cardWebm', 'video/webm'], ['cardMp4', 'video/mp4']].forEach(([k, type]) => {
-      const src = document.createElement('source'); src.src = v.dataset[k]; src.type = type; v.appendChild(src);
-    });
+    v.src = small && v.dataset.cardMp4Sm ? v.dataset.cardMp4Sm : v.dataset.cardMp4;
     v.preload = 'auto';
-    v.addEventListener('loadedmetadata', () => { if (v.currentTime < 1) v.currentTime = 1; }, { once: true });
     v.load();
     return v;
   }
@@ -44,6 +44,26 @@
     if (!v) return;
     if (on) v.play().catch(() => {}); else v.pause();
   }
+  function prefetchAll() {
+    const c = navigator.connection;
+    if (still || (c && (c.saveData || /(^|-)2g|3g/.test(c.effectiveType || '')))) return;
+    const queue = strips.filter((s) => s.querySelector('video[data-card-mp4]'));
+    (function next() {
+      const s = queue.shift();
+      if (!s) return;
+      const v = loadVideo(s);
+      if (!v || v.readyState >= 4) { next(); return; }
+      let moved = false;
+      const go = () => { if (!moved) { moved = true; next(); } };
+      v.addEventListener('canplaythrough', go, { once: true });
+      v.addEventListener('error', go, { once: true });
+      setTimeout(go, 6000);
+    })();
+  }
+  window.addEventListener('load', () => {
+    const idle = window.requestIdleCallback || ((f) => setTimeout(f, 1200));
+    setTimeout(() => idle(prefetchAll), 800);
+  });
 
   function open(target) {
     strips.forEach((s) => {
