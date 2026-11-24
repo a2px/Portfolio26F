@@ -28,6 +28,8 @@
   --spring-fallback: cubic-bezier(.22, 1, .36, 1);
   --dur: 1.05s;
   --out: cubic-bezier(.22, 1, .36, 1);
+  /* quick spring with a small overshoot, for the button hover fill */
+  --spring-btn: cubic-bezier(.34, 1.25, .5, 1);
 }
 
 *, *::before, *::after { box-sizing: border-box; }
@@ -382,11 +384,27 @@ a { color: inherit; text-decoration: none; }
   min-height: 52px; padding: 0 20px 0 24px; border-radius: 999px;
   background: var(--ink); color: var(--paper); font-size: 16px; white-space: nowrap;
   box-shadow: 0 10px 24px -14px rgba(20,20,20,.55);
-  transition: background .25s ease, color .25s ease;
+  position: relative; isolation: isolate;
+  transition: color .25s ease;
 }
-.cta svg { flex: none; transition: transform .4s var(--out); }
-.strip[data-open] .cta:hover { background: var(--cobalt); color: var(--paper); }
-.strip[data-open] .cta:hover svg { transform: translateX(4px); }
+/* Hover (after iconslidebutton.framer.website, Ashley 2026-11-24): a Cobalt fill starts as a small
+   dot behind the arrow at the right end and springs out to fill the whole pill; it shrinks back the
+   same way on leave. The fill is a clip-path on ::before, so it never stretches. */
+.cta::before {
+  content: ""; position: absolute; inset: 0; z-index: -1; border-radius: inherit; background: var(--cobalt);
+  clip-path: inset(30% 22px 30% calc(100% - 38px) round 999px); opacity: 0;
+  transition: clip-path .45s var(--spring-btn), opacity .2s ease;
+}
+.cta > span { transition: transform .45s var(--spring-btn); }
+.cta svg { flex: none; transition: transform .45s var(--spring-btn); }
+@media (hover: hover) {
+  .cta:hover::before { clip-path: inset(0 0 0 0 round 999px); opacity: 1; }
+  /* once the fill has grown, the pill itself turns Cobalt so no dark hairline shows at its edge */
+  .cta:hover { color: var(--paper); background-color: var(--cobalt); transition: color .25s ease, background-color 0s linear .3s, box-shadow 0s linear .3s; }
+  .cta--ghost:hover { box-shadow: none; }
+  .cta:hover > span { transform: translateX(-3px); }
+  .cta:hover svg { transform: translateX(4px); }
+}
 .cta:active { transform: scale(.97); }
 .cta:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
 
@@ -505,8 +523,7 @@ a { color: inherit; text-decoration: none; }
 
 /* Outlined button, the quieter partner to the Ink button */
 .cta--ghost { background: transparent; color: var(--ink); box-shadow: inset 0 0 0 1.5px var(--ink); }
-.about .cta:hover { background: var(--cobalt); color: var(--paper); box-shadow: none; }
-.about .cta:hover svg { transform: translateX(4px); }
+.cta--ghost::before { clip-path: inset(30% 16px 30% calc(100% - 32px) round 999px); }
 .about .cta:focus-visible { outline: 2px solid var(--cobalt); }
 
 .exp {
@@ -585,8 +602,6 @@ a.exp__company:focus-visible { outline: 2px solid var(--cobalt); outline-offset:
 .ba__list li:last-child { border-bottom: 0; }
 
 .case__next { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 48px; padding: 0 var(--pad); }
-.case .cta:hover { background: var(--cobalt); color: var(--paper); box-shadow: none; }
-.case .cta:hover svg { transform: translateX(4px); }
 .case .cta:focus-visible { outline: 2px solid var(--cobalt); }
 
 @media (max-width: 760px) {
@@ -676,8 +691,6 @@ a.play__card:focus-visible { outline: 2px solid var(--cobalt); outline-offset: 6
 .cs-tags { justify-content: flex-start; max-width: none; margin-bottom: 24px; }
 .cs-hero__title { margin: 0; font-family: "PP Frama", system-ui, sans-serif; font-weight: 400; font-size: clamp(44px, 5.6vw, 84px); line-height: .98; letter-spacing: -.015em; text-wrap: balance; }
 .cs-hero__right p { margin: 0 0 24px; font-size: clamp(17px, 1.4vw, 20px); line-height: 1.5; color: var(--body); max-width: 46ch; }
-.cs .cta:hover { background: var(--cobalt); color: var(--paper); box-shadow: none; }
-.cs .cta:hover svg { transform: translateX(4px); }
 .cs-meta { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; margin: 48px 0 40px; }
 .cs-meta div { padding: 18px 20px; border-radius: 18px; background: #fff; border: 1px solid var(--line); }
 .cs-meta dt { font-size: 14px; font-style: italic; color: var(--body); margin-bottom: 6px; }
