@@ -1022,3 +1022,7 @@ a.play__card:focus-visible { outline: 2px solid var(--cobalt); outline-offset: 6
 .cs-box { margin: 8px 0 24px; padding: 26px 30px; border-radius: 18px; background: var(--cs-tint, var(--mist)); }
 .cs-box > :last-child, .cs-box li:last-child { margin-bottom: 0; }
 .cs-video video { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; border-radius: 18px; border: 1px solid var(--line); background: #fff; }
+/* About: recommendations line up with My experience (same side inset, gap and heading size) */
+.recs { margin-top: 72px; padding: 0 var(--pad); }
+.recs__h { margin: 0 0 24px; font-size: clamp(24px, 2.2vw, 32px); line-height: 1.15; letter-spacing: normal; }
+@media (max-width: 760px) { .recs { margin-top: 48px; padding: 0 6px; } }
