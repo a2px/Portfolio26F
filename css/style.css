@@ -869,3 +869,156 @@ a.play__card:focus-visible { outline: 2px solid var(--cobalt); outline-offset: 6
   .about__snap { width: 48%; border-width: 4px; border-radius: 14px; }
   .about__snap img { border-radius: 10px; }
 }
+
+/* ---------- CMA case study extras (2026-11-24) ---------- */
+/* P1 / P2 / P3 blocks: a numbered point with a divider above, like .cs-step without the side image */
+.cs-point { padding: 24px 0 8px; border-top: 1px solid var(--line); }
+.cs-point .cs-fig { margin: 16px 0 20px; }
+/* A quote in a person's voice, with who said it */
+.cs-quote--voice p { margin: 0 0 10px; font-family: "PP Frama", system-ui, sans-serif; font-size: clamp(19px, 1.6vw, 22px); line-height: 1.4; }
+.cs-quote--voice p::before { content: "“"; } .cs-quote--voice p::after { content: "”"; }
+.cs-quote--voice cite { font-style: italic; font-size: 15px; color: var(--body); }
+/* How might we: the question the work answers */
+.cs-hmw { background: var(--ink); color: var(--paper); padding: 28px; }
+.cs-hmw p { margin: 0; font-family: "PP Frama", system-ui, sans-serif; font-size: clamp(22px, 2vw, 28px); line-height: 1.3; }
+.cs-hmw .cs-hmw__label { font-family: inherit; font-size: 14px; font-style: italic; color: #BDBDB6; margin-bottom: 8px; }
+/* Image still to come from Ashley */
+.cs-ph { display: grid; place-items: center; aspect-ratio: 16 / 9; border-radius: 18px; border: 1.5px dashed #A3A39C; background: #fff; color: var(--body); font-size: 15px; font-style: italic; text-align: center; padding: 24px; }
+/* Request-to-feature flow diagram, with the missing design step dashed */
+.cs-flow { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 8px; padding: 28px 24px; border-radius: 18px; background: var(--cs-tint, var(--mist)); }
+.cs-flow__step { padding: 10px 16px; border-radius: 999px; background: #fff; border: 1px solid var(--line); font-size: 15px; white-space: nowrap; }
+.cs-flow__step--missing { background: transparent; border: 1.5px dashed #C2410C; color: #9A3412; text-decoration: line-through; }
+.cs-flow__step--end { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+.cs-flow__arrow { width: 22px; height: 1.5px; background: var(--ink); position: relative; flex: none; }
+.cs-flow__arrow::after { content: ""; position: absolute; right: -1px; top: -4px; width: 8px; height: 8px; border-top: 1.5px solid var(--ink); border-right: 1.5px solid var(--ink); transform: rotate(45deg); }
+/* Research table: three columns on wide screens, stacked cards on phones */
+.cs-table { margin: 8px 0 24px; border: 1px solid var(--line); border-radius: 18px; overflow: hidden; background: #fff; }
+.cs-table__row { display: grid; grid-template-columns: 1fr 1.3fr 1.3fr; }
+.cs-table__row + .cs-table__row { border-top: 1px solid var(--line); }
+.cs-table__row > span { padding: 16px 18px; font-size: 16px; line-height: 1.5; }
+.cs-table__voice { grid-column: 1 / -1; margin: 0 18px 18px; }
+.cs-table__media { grid-column: 1 / -1; display: block; margin: 0 18px 18px; border: 1px solid var(--line); border-radius: 12px; overflow: hidden; cursor: zoom-in; }
+.cs-table__media img { display: block; width: 100%; height: auto; }
+.cs-table__head { background: var(--cs-tint, var(--mist)); }
+.cs-table__head > span { font-size: 14px; font-style: italic; color: var(--body); padding-top: 12px; padding-bottom: 12px; }
+@media (max-width: 760px) {
+  .cs-table__head { display: none; }
+  .cs-table__row { grid-template-columns: 1fr; padding: 8px 0; }
+  .cs-table__row > span { padding: 6px 18px; }
+  .cs-table__row > span:not(:first-child)::before { content: attr(data-h); display: block; font-size: 13px; font-style: italic; color: var(--body); }
+}
+/* Quotes shown as Slack messages */
+.cs-slack { display: flex; gap: 12px; align-items: flex-start; margin: 8px 0 24px; padding: 16px 18px; border-radius: 12px; background: #fff; border: 1px solid var(--line); box-shadow: 0 1px 2px rgba(20,20,19,.04); font-family: -apple-system, "Segoe UI", system-ui, sans-serif; }
+.cs-slack__avatar { flex: none; display: grid; place-items: center; width: 36px; height: 36px; border-radius: 8px; background: var(--av, var(--ink)); color: #fff; font-size: 14px; font-weight: 700; }
+.cs-section .cs-slack p { margin: 0; font-size: 15px; line-height: 1.45; }
+.cs-slack__who strong { font-weight: 800; }
+.cs-slack__who span { color: #616061; font-size: 13px; margin-left: 4px; }
+@media (max-width: 760px) { .cs-flow__arrow { width: 14px; } }
+
+/* Case study section openers (Ashley 2026-11-24): the section name is small eyebrow text and the
+   line under it is the section's big heading. */
+.cs-section > h2 {
+  margin: 0 0 10px; font-family: "PP Frama Text", system-ui, sans-serif; font-size: 15px; line-height: 1.4;
+  letter-spacing: .06em; text-transform: uppercase; color: var(--body);
+}
+.cs-section > h2 + h3, .cs-section > h2 + .cs-split > div:first-child > h3:first-child {
+  margin: 0 0 20px; font-family: "PP Frama", system-ui, sans-serif; font-weight: 400; color: var(--ink);
+  font-size: clamp(30px, 3vw, 44px); line-height: 1.1; letter-spacing: -.01em; text-wrap: balance;
+}
+/* An intro sentence too long to be a heading: large body text instead */
+.cs-section p.cs-lead { font-family: "PP Frama", system-ui, sans-serif; font-size: clamp(21px, 1.8vw, 25px); line-height: 1.4; letter-spacing: -.005em; margin-bottom: 24px; }
+
+/* Step numbers (01, 02, 03) sit in a filled circle of the page's pastel tint (Ashley 2026-11-24) */
+.cs-section .cs-step__num {
+  display: grid; place-items: center; width: 44px; height: 44px; border-radius: 50%;
+  margin: 0 0 14px !important; background: var(--cs-tint, var(--mist)); color: var(--ink);
+  font-family: "PP Frama", system-ui, sans-serif; font-style: normal; font-size: 16px !important; line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Framed hero (Ashley 2026-11-24): the full-width band in the page's pastel tint holds one large
+   rounded frame, either an image, a placeholder, or the before/after slider below. */
+.cs-bleed--frame { padding: clamp(24px, 4vw, 56px) max(clamp(20px, 4.6vw, 64px), (100% - 1400px) / 2); }
+.cs-bleed--frame > .cs-ph, .cs-bleed--frame > img, .cs-bleed--frame > .cmp {
+  display: block; width: 100%; height: auto; aspect-ratio: 2400 / 1483; max-height: 72vh; margin: 0 auto;
+  border-radius: 22px; border: 1px solid var(--line); object-fit: cover; object-position: top center;
+}
+.cs-bleed--frame > .cs-ph { display: grid; background: rgba(255,255,255,.55); }
+
+/* Before / after slider (after bencho.dev image-compare): drag, click, or arrow keys move the
+   divider; the line bends a little with drag speed and springs straight. main.js drives it. */
+.cmp { position: relative; overflow: hidden; touch-action: pan-y; cursor: ew-resize; user-select: none; background: #fff; outline: none; --p: .5; }
+.cmp:focus-visible { box-shadow: 0 0 0 3px var(--cobalt); }
+.cmp-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: top center; display: block; -webkit-user-drag: none; }
+.cmp-before { position: absolute; inset: 0; clip-path: inset(0 calc((1 - var(--p)) * 100%) 0 0); }
+.cmp-ph { display: grid; place-items: center; font-size: 15px; font-style: italic; color: var(--body); }
+.cmp-ph--after { background: #fff; }
+.cmp-ph--before { background: #DCDCD6; }
+.cmp-tag {
+  position: absolute; top: 14px; left: 14px; padding: 5px 13px; border-radius: 999px; pointer-events: none;
+  background: rgba(20, 20, 19, .42); color: #fff; font-size: 13px; backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+  transition: opacity .15s ease;
+}
+.cmp-tag.cmp-right { left: auto; right: 14px; }
+.cmp-tag[data-off] { opacity: 0; }
+.cmp-line { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; pointer-events: none; filter: drop-shadow(0 0 6px rgba(255,255,255,.5)); }
+.cmp-line path { fill: none; stroke: #fff; stroke-width: 2px; }
+.cmp-grip { position: absolute; top: 0; bottom: 0; left: calc(var(--p) * 100%); width: 0; pointer-events: none; }
+.cmp-knob {
+  position: absolute; top: 50%; left: 50%; translate: -50% -50%; display: grid; place-items: center; width: 40px; height: 40px;
+  border-radius: 50%; background: #fff; color: var(--ink); box-shadow: 0 2px 12px rgba(20,20,19,.25);
+  transition: scale .22s cubic-bezier(.24, 1.34, .38, 1);
+}
+.cmp:hover .cmp-knob { scale: 1.08; }
+.cmp[data-held] .cmp-knob { scale: .9; }
+@media (max-width: 760px) { .cs-bleed--frame > .cs-ph, .cs-bleed--frame > img, .cs-bleed--frame > .cmp { border-radius: 16px; } }
+.cmp-ph--before { justify-items: start; padding-left: 12%; }
+.cmp-ph--after { justify-items: end; padding-right: 12%; }
+.cs-fig--narrow { max-width: 560px; }
+
+/* Case study body text: PP Frama Text is drawn loose; tighten so it sits with the display headings */
+.cs-section p, .cs-section li, .cs-table__row > span, .cs-hero__right p { letter-spacing: -.02em; }
+.cs-section p.cs-lead { letter-spacing: -.005em; }
+.cs-section p.cs-step__num, .cs-section .cs-quote--voice p, .cs-section .cs-slack p { letter-spacing: normal; }
+
+/* Side-by-side before/after videos inside a case study point */
+.cs-ba { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 20px 0 24px; }
+.cs-ba__label { margin: 0 0 10px !important; font-size: 15px !important; color: var(--body); }
+.cs-ba__label strong { color: var(--ink); font-weight: 400; font-family: "PP Frama", system-ui, sans-serif; }
+.cs-ba__media { padding: 20px; border-radius: 18px; background: var(--cs-tint, var(--mist)); display: grid; place-items: center; aspect-ratio: 3 / 4; }
+.cs-ba__media video { display: block; max-width: 100%; max-height: 100%; width: auto; height: auto; border-radius: 10px; }
+@media (max-width: 600px) { .cs-ba { grid-template-columns: 1fr; } }
+/* Slider: show the whole screenshots (no 72vh crop); narrow the frame instead on short screens */
+.cs-bleed--frame > .cmp { max-height: none; max-width: calc(88vh * 2800 / 1914); }
+.cs-bleed .cmp-img { max-height: none; }
+.cs-table__fig { border: 0; border-radius: 0; overflow: visible; cursor: auto; }
+.cs-table__fig a { display: block; border: 1px solid var(--line); border-radius: 12px; overflow: hidden; cursor: zoom-in; }
+.cs-table__fig figcaption { margin-top: 8px; font-size: 14px; color: var(--body); }
+
+/* About: LinkedIn recommendations (Ashley 2026-11-25) */
+.recs { margin-top: 96px; padding: 0 var(--pad) 24px; }
+.recs__h { margin: 0 0 32px; font-family: "PP Frama", system-ui, sans-serif; font-weight: 400; font-size: clamp(30px, 3.4vw, 48px); line-height: 1.1; letter-spacing: -.01em; text-wrap: balance; }
+.recs__yue { font-family: "PingFang HK", "PingFang TC", "Noto Sans HK", "Noto Sans TC", "Microsoft JhengHei", sans-serif; color: var(--body); font-size: .8em; white-space: nowrap; }
+.recs__list { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; align-items: stretch; }
+.recs__card { display: flex; flex-direction: column; justify-content: space-between; gap: 28px; padding: 28px; border-radius: 22px; background: #fff; border: 1px solid var(--line); }
+.recs__quote { margin: 0; }
+.recs__quote p { margin: 0 0 12px; font-size: 16px; line-height: 1.6; letter-spacing: -.02em; color: var(--ink); }
+.recs__quote p:first-child::before { content: "“"; } .recs__quote p:last-child::after { content: "”"; }
+.recs__quote p:last-child { margin-bottom: 0; }
+.recs__who { display: flex; align-items: center; gap: 14px; }
+.recs__avatar { flex: none; display: grid; place-items: center; width: 48px; height: 48px; border-radius: 50%; background: var(--av); font-family: "PP Frama", system-ui, sans-serif; font-size: 16px; color: var(--ink); }
+.recs__who > span:last-child { display: flex; flex-direction: column; gap: 2px; }
+.recs__name { font-family: "PP Frama", system-ui, sans-serif; font-weight: 400; font-size: 18px; }
+.recs__role, .recs__rel { font-size: 14px; color: var(--body); }
+.recs__rel { font-style: italic; }
+.recs__more { display: inline-block; margin-top: 20px; font-size: 15px; color: var(--cobalt); text-decoration: underline; text-underline-offset: 4px; text-decoration-color: color-mix(in srgb, var(--cobalt) 40%, transparent); }
+.recs__more:hover { color: var(--ink); }
+@media (max-width: 1000px) { .recs__list { grid-template-columns: 1fr; } }
+.recs__src { display: flex; align-items: center; gap: 8px; margin: 0 0 -8px; font-size: 13px; color: var(--body); }
+.recs__li { flex: none; }
+.recs__card { justify-content: flex-start; gap: 24px; } .recs__src { margin: 0; } .recs__who { margin-top: auto; }
+
+/* Grey summary box (CMA reflection) */
+.cs-box { margin: 8px 0 24px; padding: 26px 30px; border-radius: 18px; background: var(--cs-tint, var(--mist)); }
+.cs-box > :last-child, .cs-box li:last-child { margin-bottom: 0; }
+.cs-video video { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; border-radius: 18px; border: 1px solid var(--line); background: #fff; }

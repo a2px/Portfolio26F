@@ -253,3 +253,50 @@
     modal.addEventListener('close', () => { if (video) video.pause(); card.focus(); });
   });
 })();
+
+// Before/after slider (.cmp): drag, click, or arrow keys move the divider. While dragging, the
+// divider line bends with the drag speed and springs back straight; the Before/After labels fade
+// when the divider covers them. The reveal is a straight clip (set through --p); only the drawn
+// line bends, which keeps the images crisp.
+(function () {
+  document.querySelectorAll('.cmp').forEach((el) => {
+    const path = el.querySelector('.cmp-line path');
+    const tags = el.querySelectorAll('.cmp-tag');
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let p = 0.5, target = 0.5, bend = 0, held = false, raf = 0;
+    function draw() {
+      const w = el.clientWidth, h = el.clientHeight, x = p * w;
+      el.style.setProperty('--p', p.toFixed(4));
+      path.setAttribute('d', `M ${x.toFixed(2)} 0 Q ${(x + bend).toFixed(2)} ${h / 2} ${x.toFixed(2)} ${h}`);
+      el.setAttribute('aria-valuenow', Math.round(p * 100));
+      tags[0].toggleAttribute('data-off', p < 0.16);
+      tags[1].toggleAttribute('data-off', p > 0.84);
+    }
+    function tick() {
+      const prev = p;
+      p += (target - p) * (reduce ? 1 : 0.35);
+      const v = (p - prev) * el.clientWidth;
+      bend += (Math.max(-40, Math.min(40, -v * 4)) - bend) * 0.25;
+      if (Math.abs(target - p) < 0.0005 && Math.abs(bend) < 0.2 && !held) { p = target; bend = 0; draw(); raf = 0; return; }
+      draw(); raf = requestAnimationFrame(tick);
+    }
+    function go(np) { target = Math.max(0, Math.min(1, np)); if (!raf) raf = requestAnimationFrame(tick); }
+    function fromEvent(e) { const r = el.getBoundingClientRect(); return (e.clientX - r.left) / r.width; }
+    el.addEventListener('pointerdown', (e) => {
+      held = true; el.setAttribute('data-held', ''); el.setPointerCapture(e.pointerId); go(fromEvent(e));
+    });
+    el.addEventListener('pointermove', (e) => { if (held) go(fromEvent(e)); });
+    const release = () => { held = false; el.removeAttribute('data-held'); go(target); };
+    el.addEventListener('pointerup', release);
+    el.addEventListener('pointercancel', release);
+    el.addEventListener('keydown', (e) => {
+      const step = e.shiftKey ? 0.2 : 0.05;
+      if (e.key === 'ArrowLeft' || e.key === 'ArrowDown') { go(target - step); e.preventDefault(); }
+      else if (e.key === 'ArrowRight' || e.key === 'ArrowUp') { go(target + step); e.preventDefault(); }
+      else if (e.key === 'Home') { go(0); e.preventDefault(); }
+      else if (e.key === 'End') { go(1); e.preventDefault(); }
+    });
+    window.addEventListener('resize', draw);
+    draw();
+  });
+})();
